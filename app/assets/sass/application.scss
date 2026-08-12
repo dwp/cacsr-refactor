@@ -1,6 +1,87 @@
 //
 // For guidance on how to add CSS and SCSS see:
 // https://prototype-kit.service.gov.uk/docs/adding-css-javascript-and-images
-// 
+//
 
-// Add extra styles here
+
+/* Agent layout only */
+.agent-layout {
+
+  /* Global agent font */
+  font-family: Arial, sans-serif;
+
+  .govuk-body,
+  .govuk-heading-xl,
+  .govuk-heading-l,
+  .govuk-heading-m,
+  .govuk-heading-s,
+  .govuk-caption-l,
+  .govuk-caption-m,
+  .govuk-label,
+  .govuk-input,
+  .govuk-select,
+  .govuk-textarea,
+  .govuk-button,
+  .govuk-summary-list,
+  .govuk-task-list,
+  .govuk-table {
+    font-family: Arial, sans-serif;
+  }
+
+  /* Header */
+
+  .govuk-header {
+    background: #0b0c0c;
+  }
+
+  .govuk-header__container {
+    border-bottom: 0;
+  }
+
+  /* Footer */
+
+
+  /* ==================================================
+     CLAIMANT SUMMARY
+     ================================================== */
+
+  .app-claimant-summary {
+    background: #ffffff;
+    padding: 32px 0;
+  }
+
+  // .app-claimant-summary__name {
+  //   margin: 0 0 16px;
+  //   line-height: 1.1;
+  //   color: #0b0c0c;
+  // }
+
+  // .app-claimant-summary__row {
+  //   margin-bottom: 6px;
+  //   line-height: 1.4;
+  //   color: #0b0c0c;
+  // }
+
+  // .app-status-box--wide {
+  //   padding: 3px 16px;
+  //   text-align: center;
+  // }
+
+  /* Navigation spacing */
+
+  // .govuk-summary-list__value {
+  //   width: 45%;
+  // }
+
+  /* More compact forms for agents */
+
+  // .govuk-form-group {
+  //   margin-bottom: 20px;
+  // }
+
+  // .govuk-input,
+  // .govuk-select {
+  //   max-width: 30rem;
+  // }
+
+}

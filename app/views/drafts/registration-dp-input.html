@@ -1,0 +1,171 @@
+{% extends "layouts/agent-main.html" %}
+
+{% block pageTitle %}
+  Edit claim information – {{ serviceName }}
+{% endblock %}
+
+{% block containerStart %}
+  {{ govukBackLink({
+    text: "Back",
+    href: "javascript:window.history.back()"
+  }) }}
+{% endblock %}
+
+{% block content %}
+
+<div class="govuk-grid-row">
+
+    
+      <h1 class="govuk-heading-l">
+        dependant details
+      </h1>
+
+
+      {{ govukInput({
+        label: {
+          text: "National Insurance number"
+        },
+        
+        id: "partner-nino",
+        classes: "govuk-input--width-10",
+        name: "customerNino",
+        value: "PJ 12 34 56 C"
+      }) }}
+
+
+      {{ govukSelect({
+        id: "dependant-title",
+        name: "dependantTitle",
+        label: {
+          text: "Title"
+        },
+        items: [
+          { value: "Ms", text: "Ms", selected: true },
+          { value: "Mr", text: "Mr" },
+          { value: "Mrs", text: "Mrs" }
+        ]
+      }) }}
+
+      
+      {{ govukInput({
+        label: {
+          text: "First name"
+        },
+        classes: "govuk-input--width-20",
+        id: "first-name",
+        name: "firstName",
+        autocomplete: "name",
+        spellcheck: false
+      }) }}
+
+
+            {{ govukInput({
+        label: {
+          text: "Middle name"
+        },
+        classes: "govuk-input--width-20",
+        id: "first-name",
+        name: "firstName",
+        autocomplete: "lastname",
+        spellcheck: false
+      }) }}
+
+
+            {{ govukInput({
+        label: {
+          text: "Last name"
+        },
+        classes: "govuk-input--width-20",
+        id: "first-name",
+        name: "firstName",
+        autocomplete: "lastname",
+        spellcheck: false
+      }) }}
+
+
+
+     {{ govukDateInput({
+  id: "Date of birth",
+  fieldset: {
+    legend: {
+      text: "Date of birth",
+      isPageHeading: true,
+      classes: "govuk-fieldset__legend--s"
+    }
+  }
+}) }}
+      
+
+
+
+
+
+<p class="govuk-heading-s">Customer address</p>
+
+<div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds">
+
+      <form method="post" action="address-start-date">
+        <fieldset class="govuk-fieldset">
+          <div class="govuk-form-group">
+            <label class="govuk-label" for="claimantAddress1">
+              Address line 1
+            </label>
+            <input class="govuk-input govuk-!-width-full" id="claimAddress1" name="claimAddress1" type="text" value="">
+          </div>
+
+          <div class="govuk-form-group">
+            <label class="govuk-label" for="claimAddress2">
+              Address line 2 (optional)
+            </label>
+            <input class="govuk-input govuk-!-width-full" id="claimAddress2" name="claimAddress2" type="text" value="">
+          </div>
+
+          <div class="govuk-form-group">
+            <label class="govuk-label" for="claimAddress3">
+              Address line 3
+            </label>
+            <input class="govuk-input govuk-!-width-full" id="claimAddress3" name="claimAddress3" type="text" value="">
+          </div>
+
+          <div class="govuk-form-group">
+            <label class="govuk-label" for="claimAddress4">
+              Address line 4 (optional)
+            </label>
+            <input class="govuk-input govuk-!-width-full" id="claimAddress4" name="claimAddress4" type="text" value="">
+          </div>
+
+          <div class="govuk-form-group">
+            <label class="govuk-label" for="claimPostcode">
+              Country
+            </label>
+            <input class="govuk-input govuk-input--width-20" id="claimPostcode" name="claimPostcode" type="text" value="">
+          </div>
+        </fieldset>
+    
+
+
+
+
+
+
+
+
+      <p class="govuk-body">
+        <a href="">View previous dependants </a>
+      </p>
+
+
+
+  
+
+      {{ govukButton({
+        text: "Save"
+      }) }}
+
+    </form>
+
+  </div>
+</div>
+
+{% endblock %}

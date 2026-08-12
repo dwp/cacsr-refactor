@@ -1,0 +1,49 @@
+{% extends "layouts/agent-main.html" %}
+
+{% block pageTitle %}
+  Question page template – {{ serviceName }} – GOV.UK Prototype Kit
+{% endblock %}
+
+{% block content %}
+
+
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds">
+{% if data['prototypeScenarioSelection'] == "First time claim registered manually" %}
+      <form class="form" action="search-result" method="post">
+
+        {% elif data['prototypeScenarioSelection'] == "First time claim registration via Robotics" %}
+        <form class="form" action="search-result" method="post">
+
+{% endif %}
+
+<div class="govuk-form-group">
+  <h1 class="govuk-label-wrapper">
+    <label class="govuk-label govuk-label--l" for="event-name">
+      Enter dependant's NINO
+    </label>
+     </h1> 
+
+    <p class="govuk-body">Enter the customer's National Insurance </p>
+
+{{ govukInput({
+  id: "ninoSearch",
+  classes: "govuk-input--width-10",
+  name: "ninoSearch"
+}) }}
+
+ 
+</div>
+
+        {{ govukButton({
+          text: "Continue"
+        }) }}
+
+    
+
+    </div>
+  </div>
+
+    </form>
+
+{% endblock %}

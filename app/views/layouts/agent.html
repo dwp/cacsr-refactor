@@ -1,0 +1,84 @@
+{% extends "govuk-prototype-kit/layouts/govuk-branded.njk" %}
+
+{% from "internal-service-header/macro.njk" import dwpHeader %}
+
+{% set bodyClasses = "agent-layout" %}
+
+{% block header %}
+
+{{ dwpHeader({
+  serviceName: "Carer's Allowance Agent Service",
+  serviceHref: "/",
+  container: true,
+  navigation: {
+    items: [
+      {
+        href: "#",
+        text: "Claim overview"
+      },
+      {
+        href: "#",
+        text: "Register a claim"
+      },
+      {
+        href: "#",
+        text: "Access another claim"
+      }
+    ]
+  }
+}) }}
+
+
+<div class="app-claimant-banner">
+
+  <div class="govuk-width-container">
+
+    <div class="app-claimant-banner__name-row">
+
+      <h1 class="app-claimant-banner__name">
+        Melissa Gentles
+      </h1>
+
+      <strong class="govuk-tag app-claimant-banner__tag">
+        In progress
+      </strong>
+
+    </div>
+
+    <div class="app-claimant-banner__details">
+      QQ123456A
+      <span class="app-claimant-banner__separator">•</span>
+      23 July 1981
+      <span class="app-claimant-banner__separator">•</span>
+      44
+    </div>
+
+  </div>
+
+</div>
+
+{% endblock %}
+
+{% block footer %}
+{{
+    dwpFooter({
+        meta: {
+            visuallyHiddenTitle: "About this website",
+            items: [
+            {
+                href: "",
+                text: "Accessibility statement"
+            },
+            {
+                href: "",
+                text: "Privacy"
+            },
+            {
+                href: "/manage-prototype/clear-data",
+                text: "Clear data"
+              }
+            ]
+        }
+    }) 
+}}
+{% endblock %}

@@ -1,0 +1,442 @@
+{% extends "layouts/agent-main.html" %}
+
+{% block pageTitle %}
+  Edit claim information – {{ serviceName }}
+{% endblock %}
+
+{% block containerStart %}
+  {{ govukBackLink({
+    text: "Back",
+    href: "javascript:window.history.back()"
+  }) }}
+{% endblock %}
+
+{% block content %}
+{% from "govuk/components/radios/macro.njk" import govukRadios %}
+
+<h1 class="govuk-heading-l">
+  What is the relationship of the dependant to the claimant
+</h1>
+
+
+
+<div class="govuk-grid-row">
+
+  <div class="govuk-grid-column-one-half">
+
+    <h2 class="govuk-heading-m">Partner relationships</h2>
+
+    {{ govukRadios({
+      idPrefix: "dpRelationship",
+      name: "dpRelationship",
+      classes: "govuk-radios",
+      items: [
+        {
+          value: "01",
+          text: "Wife or civil partner"
+        },
+        {
+          value: "30",
+          text: "Husband or civil partner"
+        },
+        {
+          value: "33",
+          text: "Partner"
+        }
+      ]
+    }) }}
+
+    <h2 class="govuk-heading-m">Parents and grandparents</h2>
+
+    {{ govukRadios({
+      idPrefix: "dpRelationship2",
+      name: "dpRelationship",
+      classes: "govuk-radios",
+      items: [
+        {
+          value: "02",
+          text: "Father"
+        },
+        {
+          value: "03",
+          text: "Mother"
+        },
+        {
+          value: "04",
+          text: "Grandfather"
+        },
+        {
+          value: "05",
+          text: "Grandmother"
+        }
+      ]
+    }) }}
+
+    <h2 class="govuk-heading-m">Children and grandchildren</h2>
+
+    {{ govukRadios({
+      idPrefix: "dpRelationship3",
+      name: "dpRelationship",
+      classes: "govuk-radios",
+      items: [
+        {
+          value: "06",
+          text: "Son"
+        },
+        {
+          value: "07",
+          text: "Daughter"
+        },
+        {
+          value: "08",
+          text: "Grandson"
+        },
+        {
+          value: "09",
+          text: "Granddaughter"
+        }
+      ]
+    }) }}
+
+    <h2 class="govuk-heading-m">Extended family</h2>
+
+    {{ govukRadios({
+      idPrefix: "dpRelationship5",
+      name: "dpRelationship",
+      classes: "govuk-radios",
+      items: [
+        {
+          value: "20",
+          text: "Aunt"
+        },
+        {
+          value: "21",
+          text: "Uncle"
+        },
+        {
+          value: "22",
+          text: "Nephew"
+        },
+        {
+          value: "23",
+          text: "Niece"
+        }
+      ]
+    }) }}
+
+
+  </div>
+
+  <div class="govuk-grid-column-one-half">
+
+    <h2 class="govuk-heading-m">Siblings and step-relatives</h2>
+
+    {{ govukRadios({
+      idPrefix: "dpRelationship4",
+      name: "dpRelationship",
+      classes: "govuk-radios",
+      items: [
+        {
+          value: "14",
+          text: "Brother"
+        },
+        {
+          value: "15",
+          text: "Sister"
+        },
+        {
+          value: "16",
+          text: "Half-brother"
+        },
+        {
+          value: "17",
+          text: "Half-sister"
+        },
+        {
+          value: "18",
+          text: "Stepbrother"
+        },
+        {
+          value: "19",
+          text: "Stepsister"
+        },
+        {
+          value: "10",
+          text: "Stepfather"
+        },
+        {
+          value: "11",
+          text: "Stepmother"
+        },
+        {
+          value: "12",
+          text: "Stepson"
+        },
+        {
+          value: "13",
+          text: "Stepdaughter"
+        }
+      ]
+    }) }}
+
+    
+    <h2 class="govuk-heading-m">In-laws </h2>
+
+    {{ govukRadios({
+      idPrefix: "dpRelationship6",
+      name: "dpRelationship",
+      classes: "govuk-radios",
+      items: [
+        {
+          value: "24",
+          text: "Father-in-law"
+        },
+        {
+          value: "25",
+          text: "Mother-in-law"
+        },
+        {
+          value: "26",
+          text: "Brother-in-law"
+        },
+        {
+          value: "27",
+          text: "Sister-in-law"
+        },
+        {
+          value: "28",
+          text: "Son-in-law"
+        },
+        {
+          value: "29",
+          text: "Daughter-in-law"
+        }
+      
+      ]
+    }) }}
+
+
+
+    <h2 class="govuk-heading-m">Friend or other</h2>
+
+    {{ govukRadios({
+      idPrefix: "dpRelationship4",
+      name: "dpRelationship",
+      classes: "govuk-radios",
+      items: [
+        {
+          value: "32",
+          text: "Other relationship"
+        },
+          {
+          value: "31",
+          text: "Friend"
+        }
+           ]
+    }) }}
+
+
+  </div>
+
+</div>
+
+{{ govukButton({
+  text: "Continue"
+}) }}
+
+<!-- {% from "govuk/components/input/macro.njk" import govukInput %}
+
+<h1 class="govuk-heading-l">
+  What is the relationship of the DP to the Claimant
+</h1>
+{{ govukSelect({
+  id: "relationship",
+  name: "relationship",
+  label: {
+    text: "Relationship"
+  },
+  items: [
+    {
+      value: "",
+      text: "Select a relationship"
+    },
+
+    {
+      text: "Partner relationships",
+      disabled: true
+    },
+    {
+      value: "01",
+      text: "Wife or civil partner"
+    },
+    {
+      value: "30",
+      text: "Husband or civil partner"
+    },
+    {
+      value: "33",
+      text: "Partner"
+    },
+
+    {
+      text: "Parents and grandparents",
+      disabled: true
+    },
+    {
+      value: "02",
+      text: "Father"
+    },
+    {
+      value: "03",
+      text: "Mother"
+    },
+    {
+      value: "04",
+      text: "Grandfather"
+    },
+    {
+      value: "05",
+      text: "Grandmother"
+    },
+
+    {
+      text: "Children and grandchildren",
+      disabled: true
+    },
+    {
+      value: "06",
+      text: "Son"
+    },
+    {
+      value: "07",
+      text: "Daughter"
+    },
+    {
+      value: "08",
+      text: "Grandson"
+    },
+    {
+      value: "09",
+      text: "Granddaughter"
+    },
+
+    {
+      text: "Step and half-relatives",
+      disabled: true
+    },
+    {
+      value: "10",
+      text: "Stepfather"
+    },
+    {
+      value: "11",
+      text: "Stepmother"
+    },
+    {
+      value: "12",
+      text: "Stepson"
+    },
+    {
+      value: "13",
+      text: "Stepdaughter"
+    },
+    {
+      value: "16",
+      text: "Half-brother"
+    },
+    {
+      value: "17",
+      text: "Half-sister"
+    },
+    {
+      value: "18",
+      text: "Stepbrother"
+    },
+    {
+      value: "19",
+      text: "Stepsister"
+    },
+
+    {
+      text: "Siblings",
+      disabled: true
+    },
+    {
+      value: "14",
+      text: "Brother"
+    },
+    {
+      value: "15",
+      text: "Sister"
+    },
+
+    {
+      text: "Extended family",
+      disabled: true
+    },
+    {
+      value: "20",
+      text: "Aunt"
+    },
+    {
+      value: "21",
+      text: "Uncle"
+    },
+    {
+      value: "22",
+      text: "Nephew"
+    },
+    {
+      value: "23",
+      text: "Niece"
+    },
+
+    {
+      text: "In-laws",
+      disabled: true
+    },
+    {
+      value: "24",
+      text: "Father-in-law"
+    },
+    {
+      value: "25",
+      text: "Mother-in-law"
+    },
+    {
+      value: "26",
+      text: "Brother-in-law"
+    },
+    {
+      value: "27",
+      text: "Sister-in-law"
+    },
+    {
+      value: "28",
+      text: "Son-in-law"
+    },
+    {
+      value: "29",
+      text: "Daughter-in-law"
+    },
+
+    {
+      text: "Other",
+      disabled: true
+    },
+    {
+      value: "31",
+      text: "Friend"
+    },
+    {
+      value: "32",
+      text: "Other relationship"
+    }
+  ]
+}) }}
+
+{{ govukButton({
+  text: "Save"
+}) }} -->
+
+{% endblock %}

@@ -1,0 +1,272 @@
+{% extends "layouts/agent.html" %}
+
+{% block pageTitle %}
+  Check answers – {{ serviceName }}
+{% endblock %}
+
+{% block containerStart %}
+  {{ govukBackLink({
+    text: "Back",
+    href: "javascript:window.history.back()"
+  }) }}
+{% endblock %}
+
+{% block content %}
+
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-two-thirds">
+
+    <h1 class="govuk-heading-l">
+      Check answers before you continue
+    </h1>
+
+    <h2 class="govuk-heading-m">Claim details</h2>
+
+    {{ govukSummaryList({
+      rows: [
+        {
+          key: {
+            text: "Date claim received"
+          },
+          value: {
+            text: "1 July 2026"
+          },
+          actions: {
+            items: [
+              {
+                href: "registration-claim",
+                text: "Change",
+                visuallyHiddenText: "date claim received"
+              }
+            ]
+          }
+        },
+        {
+          key: {
+            text: "Date of claim"
+          },
+          value: {
+            text: "5 July 2026"
+          },
+          actions: {
+            items: [
+              {
+                href: "registration-claim",
+                text: "Change",
+                visuallyHiddenText: "date of claim"
+              }
+            ]
+          }
+        },
+        {
+          key: {
+            text: "Notified start date"
+          },
+          value: {
+            text: "23 July 2026"
+          },
+          actions: {
+            items: [
+              {
+                href: "registration-claim",
+                text: "Change",
+                visuallyHiddenText: "notified start date"
+              }
+            ]
+          }
+        },
+        {
+          key: {
+            text: "DO serial number"
+          },
+          value: {
+            html: '<strong class="govuk-tag govuk-tag--grey">Not provided</strong>'
+          },
+          actions: {
+            items: [
+              {
+                href: "registration-claim",
+                text: "Add",
+                visuallyHiddenText: "DO serial number"
+              }
+            ]
+          }
+        }
+      ]
+    }) }}
+
+    <h2 class="govuk-heading-m govuk-!-margin-top-7">
+      Customer details
+    </h2>
+
+    {{ govukSummaryList({
+      rows: [
+        {
+          key: {
+            text: "National Insurance number"
+          },
+          value: {
+            text: "PJ 12 34 56 C"
+          }
+        },
+        {
+          key: {
+            text: "Title"
+          },
+          value: {
+            text: "Ms"
+          }
+        },
+        {
+          key: {
+            text: "Name"
+          },
+          value: {
+            text: "Sarah Philips"
+          },
+          actions: {
+            items: [
+              {
+                href: "registration-customer",
+                text: "Change",
+                visuallyHiddenText: "customer name"
+              }
+            ]
+          }
+        },
+        {
+          key: {
+            text: "Date of birth"
+          },
+          value: {
+            text: "5 January 1978"
+          }
+        },
+        {
+          key: {
+            text: "Address"
+          },
+          value: {
+            html: "72 Guild Street<br>London<br>SE23 6FH"
+          }
+        },
+        {
+          key: {
+            text: "Date of claim"
+          },
+          value: {
+            text: "05 December 2025"
+          }
+        },
+        {
+          key: {
+            text: "Phone number"
+          },
+          value: {
+            text: "07700 900457"
+          }
+        }
+      ]
+    }) }}
+
+    <h2 class="govuk-heading-m govuk-!-margin-top-7">
+      Partner details
+    </h2>
+
+    {{ govukSummaryList({
+      rows: [
+        {
+          key: {
+            text: "National Insurance number"
+          },
+          value: {
+            text: "AB 98 76 54 C"
+          }
+        },
+        {
+          key: {
+            text: "Title"
+          },
+          value: {
+            text: "Mr"
+          }
+        },
+        {
+          key: {
+            text: "Name"
+          },
+          value: {
+            text: "John Locke"
+          }
+        }
+      ]
+    }) }}
+
+    <h2 class="govuk-heading-m govuk-!-margin-top-7">
+      dependant details
+    </h2>
+
+    {{ govukSummaryList({
+      rows: [
+        {
+          key: {
+            text: "National Insurance number"
+          },
+          value: {
+            text: "PJ 12 34 56 C"
+          }
+        },
+        {
+          key: {
+            text: "Title"
+          },
+          value: {
+            text: "Ms"
+          }
+        },
+        {
+          key: {
+            text: "Name"
+          },
+          value: {
+            text: "Holly Jones"
+          }
+        },
+        {
+          key: {
+            text: "Date of birth"
+          },
+          value: {
+            text: "5 January 2005"
+          }
+        },
+        {
+          key: {
+            text: "Address"
+          },
+          value: {
+            html: "72 Guild Street<br>London<br>SE23 6FH"
+          }
+        },
+        {
+          key: {
+            text: "Relationship"
+          },
+          value: {
+            text: "Child"
+          }
+        }
+      ]
+    }) }}
+
+    <div class="govuk-button-group">
+      {{ govukButton({
+        text: "Continue",
+        href: "home"
+      }) }}
+    </div>
+
+  </div>
+</div>
+
+{% endblock %}

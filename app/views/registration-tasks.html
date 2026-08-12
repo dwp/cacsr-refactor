@@ -1,0 +1,79 @@
+{% extends "layouts/agent-main.html" %}
+
+{% block pageTitle %}
+  Task list template – {{ serviceName }} – GOV.UK Prototype Kit
+{% endblock %}
+
+{% block containerStart %}{% endblock %}
+
+{% block content %}
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds">
+       <form class="form" action="home" method="post">
+
+      <h1 class="govuk-heading-l">Register a new claim</h1>
+
+      {% set completedStatus = {
+        text: "Completed"
+      } %}
+
+      {% set incompleteStatus = {
+        tag: {
+          text: "Incomplete",
+          classes: "govuk-tag--blue"
+        }
+      } %}
+
+      {# To switch between the completed and incomplete statues, use some inline logic within the component below, like this: "status: (completedStatus if ... else incompleteStatus)" #}
+
+      {{ govukTaskList({
+        idPrefix: "first-section",
+        items: [
+
+          {
+            title: {
+              text: "Relationship and customer type"
+            },
+            href: "registration-claim",
+            status: incompleteStatus
+          },
+          {
+            title: {
+              text: "Claim details"
+            },
+            href: "registration-claim",
+            status: incompleteStatus
+          },
+          {
+            title: {
+              text: "Claimant and partner details"
+            },
+            href: "registration-customer",
+            status: incompleteStatus
+          },
+          {
+            title: {
+              text: "dependant relationship"
+            },
+            href: "registration-claim",
+            status: incompleteStatus
+          },
+           {
+            title: {
+              text: "Disabled person's details
+"
+            },
+            href: "registration-dp",
+            status: incompleteStatus
+          }
+        ]
+      }) }}
+
+
+      <div class="govuk-!-margin-top-5">
+        {{ govukButton({ text: "Register a claim" }) }}
+      </div>
+</form>
+    </div>
+  </div>
+{% endblock %}

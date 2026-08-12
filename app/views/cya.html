@@ -1,0 +1,272 @@
+{% extends "layouts/agent-main.html" %}
+
+{% block pageTitle %}
+  Check your answers – {{ serviceName }}
+{% endblock %}
+
+{% block containerStart %}
+  {{ govukBackLink({
+    text: "Back",
+    href: "javascript:window.history.back()"
+  }) }}
+{% endblock %}
+
+{% block content %}
+
+{% from "govuk/components/summary-list/macro.njk" import govukSummaryList %}
+
+
+ <h1 class="govuk-heading-l">
+  Check your answers
+</h1>
+
+<h2 class="govuk-heading-m">
+  Personal details
+</h2>
+
+
+<h2 class="govuk-heading-s">
+  Claimant details
+</h2>
+
+{{ govukSummaryList({
+  rows: [
+    {
+      key: { text: "National Insurance number" },
+      value: { text: "PJ 12 34 56 A" },
+      actions: {
+        items: [{
+          href: "check-nino",
+          text: "Change"
+        }]
+      }
+    },
+    {
+      key: { text: "Name" },
+      value: { text: "Jane Smith" },
+      actions: {
+        items: [{
+          href: "check-name",
+          text: "Change"
+        }]
+      }
+    },
+    {
+      key: { text: "Address" },
+      value: {
+        html: "1 High Street<br>Manchester<br>M1 1AA"
+      },
+      actions: {
+        items: [{
+          href: "check-address",
+          text: "Change"
+        }]
+      }
+    },
+    {
+      key: { text: "Phone number" },
+      value: { text: "07123 456789" },
+      actions: {
+        items: [{
+          href: "check-phone",
+          text: "Change"
+        }]
+      }
+    }
+  ]
+}) }}
+
+<h2 class="govuk-heading-s">
+  Dependant person details
+</h2>
+
+{{ govukSummaryList({
+  rows: [
+    {
+      key: { text: "National Insurance number" },
+      value: { text: "AB 12 34 56 C" },
+      actions: {
+        items: [{
+          href: "dp-nino",
+          text: "Change"
+        }]
+      }
+    },
+    {
+      key: { text: "Name" },
+      value: { text: "John Smith" },
+      actions: {
+        items: [{
+          href: "dp-name",
+          text: "Change"
+        }]
+      }
+    },
+    {
+      key: { text: "Address" },
+      value: {
+        html: "10 Market Road<br>Manchester<br>M2 2BB"
+      },
+      actions: {
+        items: [{
+          href: "dp-address",
+          text: "Change"
+        }]
+      }
+    },
+    {
+      key: { text: "Relationship to claimant" },
+      value: { text: "Son" },
+      actions: {
+        items: [{
+          href: "relationship-check",
+          text: "Change"
+        }]
+      }
+    }
+  ]
+}) }}
+
+<h2 class="govuk-heading-s">
+  Partner details
+</h2>
+
+{{ govukSummaryList({
+  rows: [
+    {
+      key: { text: "Does the customer have a partner?" },
+      value: { text: "Yes" },
+      actions: {
+        items: [{
+          href: "partner-check",
+          text: "Change"
+        }]
+      }
+    },
+    {
+      key: { text: "Partner details" },
+      value: {
+        html: "Sarah Smith<br>QQ 12 34 56 D"
+      },
+      actions: {
+        items: [{
+          href: "partner-details",
+          text: "Change"
+        }]
+      }
+    }
+  ]
+}) }}
+<br> <br>
+<h2 class="govuk-heading-m">
+  Claim details
+</h2>
+
+{{ govukSummaryList({
+  rows: [
+    {
+      key: { text: "Date of claim" },
+      value: { text: "1 January 2026" },
+      actions: {
+        items: [{
+          href: "claim-date",
+          text: "Change"
+        }]
+      }
+    },
+    {
+      key: { text: "Date received" },
+      value: { text: "5 January 2026" },
+      actions: {
+        items: [{
+          href: "date-received",
+          text: "Change"
+        }]
+      }
+    }
+  ]
+}) }}
+
+<h2 class="govuk-heading-s">
+  Qualifying benefit details
+</h2>
+
+{{ govukSummaryList({
+  rows: [
+    {
+      key: { text: "Qualifying benefit" },
+      value: { text: "Personal Independence Payment (PIP)" },
+      actions: {
+        items: [{
+          href: "qualifying-benefit",
+          text: "Change"
+        }]
+      }
+    },
+    {
+      key: { text: "Qualifying benefit start date" },
+      value: { text: "1 June 2025" },
+      actions: {
+        items: [{
+          href: "qb-start-date",
+          text: "Change"
+        }]
+      }
+    },
+    {
+      key: { text: "Qualifying benefit decision date" },
+      value: { text: "15 June 2025" },
+      actions: {
+        items: [{
+          href: "qb-decision-date",
+          text: "Change"
+        }]
+      }
+    }
+  ]
+}) }}
+<br><br>
+<h2 class="govuk-heading-m">
+  Flags and checks
+</h2>
+
+{{ govukSummaryList({
+  rows: [
+    {
+      key: { text: "Fraud or CFEMS interest" },
+      value: { text: "No" },
+      actions: {
+        items: [{
+          href: "fraud-check",
+          text: "Change"
+        }]
+      }
+    },
+    {
+      key: { text: "Power of attorney" },
+      value: { text: "Yes" },
+      actions: {
+        items: [{
+          href: "power-of-attorney",
+          text: "Change"
+        }]
+      }
+    },
+    {
+      key: { text: "Letter issued" },
+      value: { text: "Yes" }
+    }
+  ]
+}) }}
+
+ <p class="govuk-body">By registering this application you are confirming that, to the best of your knowledge, the details you are providing are correct.</p>
+
+
+{{ govukButton({
+  text: "Submit claim"
+}) }}
+
+  </div>
+</div>
+
+{% endblock %}

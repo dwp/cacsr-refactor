@@ -1,0 +1,104 @@
+{% extends "govuk-prototype-kit/layouts/govuk-branded.njk" %}
+
+{% from "internal-service-header/macro.njk" import dwpHeader %}
+
+{% set bodyClasses = "agent-layout" %}
+
+{% block header %}
+
+
+{{ dwpHeader({
+  serviceName: "Carer's Allowance Agent Service",
+  serviceHref: "/",
+  container: true,
+  navigation: {
+    items: [
+      {
+        href: "#",
+        text: "Claim overview"
+      },
+      {
+        href: "#",
+        text: "Register a claim"
+      },
+      {
+        href: "#",
+        text: "Access another claim"
+      }
+    ]
+  }
+}) }}
+
+
+<!-- {{ dwpHeader({
+  serviceName: "Carer's Allowance Agent Service",
+  serviceHref: "/",
+  container: true,
+  navigation: {
+    items: [
+      {
+        href: "#",
+        text: "Claim overview"
+      },
+      {
+        href: "#",
+        text: "Contact history"
+      },
+      {
+        href: "#",
+        text: "Access another claim"
+      },
+      {
+        href: "#",
+        text: "Access another claim"
+      }
+    ]
+  }
+}) }} -->
+
+<div class="app-claimant-summary">
+  <div class="govuk-width-container">
+
+    <h2 class="govuk-heading-m">
+      Melissa Gentles
+    </h2>
+
+    <p class="govuk-body"><strong>National Insurance number:</strong>
+      QQ123456A</p>
+
+      <p class="govuk-body"><strong>Date of Birth:</strong>
+      23 July 1981</p>
+
+
+     <p class="govuk-body"><strong>Claim status: <span class="app-status-box app-status-box--wide">
+        IN PROGRESS
+      </span></p>
+
+  </div>
+</div>
+
+{% endblock %}
+
+{% block footer %}
+{{
+    dwpFooter({
+        meta: {
+            visuallyHiddenTitle: "About this website",
+            items: [
+            {
+                href: "",
+                text: "Accessibility statement"
+            },
+            {
+                href: "",
+                text: "Privacy"
+            },
+            {
+                href: "/manage-prototype/clear-data",
+                text: "Clear data"
+              }
+            ]
+        }
+    }) 
+}}
+{% endblock %}

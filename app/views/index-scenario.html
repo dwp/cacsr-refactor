@@ -1,0 +1,104 @@
+{% extends "layouts/agent-main.html" %}
+
+{% block pageTitle %}
+  Question page template – {{ serviceName }} – GOV.UK Prototype Kit
+{% endblock %}
+
+{% block containerStart %}
+  {{ govukBackLink({
+    text: "Back",
+    href: "javascript:window.history.back()"
+  }) }}
+{% endblock %}
+
+{% block content %}
+
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds">
+
+      <form class="form" action=/claim-type method="post">
+
+
+      {% from "govuk/components/radios/macro.njk" import govukRadios %}
+
+
+
+
+    {{ govukRadios({
+      name: "prototypeScenarioSelection",
+      fieldset: {
+        legend: {
+          text: "Choose a scenario",
+          isPageHeading: true,
+          classes: "govuk-fieldset__legend--l"
+        }
+      },
+      
+      hint: {
+    text: "Select a user journey"
+  },
+  items: [
+    {
+      value: "Pre-registration journey A",
+      text: "Pre-registration journey A"
+    },
+    {
+      value: "Pre-registration journey B",
+      text: "Pre-registration journey B"
+    }
+  ]
+}) }}
+
+<!-- 
+
+    {{ govukRadios({
+      name: "prototypeScenarioSelection",
+      fieldset: {
+        legend: {
+          text: "Choose a scenario",
+          isPageHeading: true,
+          classes: "govuk-fieldset__legend--l"
+        }
+      },
+      
+      hint: {
+    text: "Select a user journey"
+  },
+  items: [
+    {
+      value: "First time claim registration via Robotics",
+      text: "First time claim registration via Robotics",
+      hint: {
+        text: "Process a claim that has been pre-registered"
+      }
+    },
+    {
+      value: "First time claim registered manually",
+      text: "First time claim registered manually",
+      hint: {
+        text: "Claim registration journey through a mre segmented, guided process"
+      }
+    },
+    {
+      value: "Process a new claim from landing",
+      text: "Process a new claim from landing",
+      hint: {
+        text: "Alternate method of accessing/registering a claim"
+      }
+    }
+  ]
+}) }} -->
+
+
+
+
+        {{ govukButton({
+          text: "Continue"
+        }) }}
+
+      </form>
+
+    </div>
+  </div>
+
+{% endblock %}

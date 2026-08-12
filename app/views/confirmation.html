@@ -1,0 +1,47 @@
+{% extends "layouts/agent-main.html" %}
+
+{% block pageTitle %}
+  Question page template – {{ serviceName }} – GOV.UK Prototype Kit
+{% endblock %}
+
+{% block containerStart %}
+  {{ govukBackLink({
+    text: "Back",
+    href: "javascript:window.history.back()"
+  }) }}
+{% endblock %}
+
+{% block content %}
+
+
+          
+    <form action="/v7/reg/check-details" method="post">
+
+ 
+
+ <div class="govuk-panel govuk-panel--confirmation">
+  <h1 class="govuk-panel__title">
+    Claim registered
+  </h1>
+  
+</div>
+
+
+ <br><p class="govuk-body">You have registered Melissa Gentles' claim for a Carer's Allowance.</p>
+
+ <h2 class="govuk-heading-m">What to do next</h2>
+
+ <p class="govuk-body">
+  <a href="/v7/tasklist" class="govuk-link govuk-link--no-visited-state">Enter claim information</a>
+</p>
+
+</form>
+
+        </main>
+
+      </form>
+
+    </div>
+  </div>
+
+{% endblock %}

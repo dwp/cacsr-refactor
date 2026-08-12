@@ -1,0 +1,86 @@
+{% extends "layouts/agent-main.html" %}
+
+{% block pageTitle %}
+  Question page template – {{ serviceName }} – GOV.UK Prototype Kit
+{% endblock %}
+
+{% block containerStart %}
+  {{ govukBackLink({
+    text: "Back",
+    href: "javascript:window.history.back()"
+  }) }}
+{% endblock %}
+
+{% block content %}
+
+      <form class="form" action="registration-customer" method="post">
+
+
+      {% from "govuk/components/radios/macro.njk" import govukRadios %}
+      <h1 class="govuk-heading-l">Claim details</h1>
+
+      {% from "govuk/components/input/macro.njk" import govukInput %}
+
+{% from "govuk/components/summary-list/macro.njk" import govukSummaryList %}
+
+{{ govukSummaryList({
+  rows: [
+    {
+      key: {
+        text: "Date claim recieved"
+      },
+      value: {
+        text: "1 July 2026"
+      },
+      actions: {
+        items: [
+          {
+            href: "#",
+            text: "Change",
+            visuallyHiddenText: "name"
+          }
+        ]
+      }
+    },
+    {
+      key: {
+        text: "Date of claim"
+      },
+      value: {
+        text: "5 July 2026"
+      },
+      actions: {
+        items: [
+          {
+            href: "#",
+            text: "Change",
+            visuallyHiddenText: "date of birth"
+          }
+        ]
+      }
+    },
+    {
+      key: {
+        text: "Notified start date"
+      },
+      value: {
+        html: '23 July 2026'
+      }
+    },
+    {
+      key: {
+        text: "DO Serial number"
+      },
+      value: {
+        html: '<a href="registration-customer" class="govuk-link">Add DO serial number</a>'
+      }
+    }
+  ]
+}) }}
+
+ <div class="govuk-!-margin-top-5">
+        {{ govukButton({ text: "Continue", href: "#" }) }}
+      </div>
+      </form>
+
+{% endblock %}

@@ -1,0 +1,78 @@
+{% extends "layouts/agent-main.html" %}
+
+{% block pageTitle %}
+  Power of attorney – {{ serviceName }}
+{% endblock %}
+
+{% block containerStart %}
+  {{ govukBackLink({
+    text: "Back",
+    href: "javascript:window.history.back()"
+  }) }}
+{% endblock %}
+
+{% block content %}
+
+{% from "govuk/components/radios/macro.njk" import govukRadios %}
+
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-two-thirds">
+
+    {% set powerOfAttorneyHtml %}
+
+      {{ govukRadios({
+        idPrefix: "letterIssued",
+        name: "letterIssued",
+        fieldset: {
+          legend: {
+            text: "Have you issued a letter?",
+            classes: "govuk-fieldset__legend--m"
+          }
+        },
+        items: [
+          {
+            value: "Yes",
+            text: "Yes"
+          },
+          {
+            value: "No",
+            text: "No"
+          }
+        ]
+      }) }}
+
+    {% endset %}
+
+    {{ govukRadios({
+      idPrefix: "powerOfAttorney",
+      name: "powerOfAttorney",
+      fieldset: {
+        legend: {
+          text: "Does the claimant have power of attorney?",
+          isPageHeading: true,
+          classes: "govuk-fieldset__legend--l"
+        }
+      },
+      items: [
+        {
+          value: "No",
+          text: "No"
+        },
+        {
+          value: "Yes",
+          text: "Yes",
+          conditional: {
+            html: powerOfAttorneyHtml
+          }
+        }
+      ]
+    }) }}
+
+    {{ govukButton({
+      text: "Continue"
+    }) }}
+
+  </div>
+</div>
+
+{% endblock %}

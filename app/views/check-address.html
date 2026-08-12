@@ -1,0 +1,82 @@
+{% extends "layouts/agent-main.html" %}
+
+{% block pageTitle %}
+  Address mismatch – {{ serviceName }}
+{% endblock %}
+
+{% block containerStart %}
+  {{ govukBackLink({
+    text: "Back",
+    href: "javascript:window.history.back()"
+  }) }}
+{% endblock %}
+
+{% block content %}
+
+{% from "govuk/components/radios/macro.njk" import govukRadios %}
+{% from "govuk/components/summary-list/macro.njk" import govukSummaryList %}
+
+<div class="govuk-grid-row">
+  <form class="form" action="check-partner" method="post">
+    <h1 class="govuk-heading-l">
+      Check the claimant's address
+    </h1>
+
+  <div class="govuk-grid-column-two-thirds">
+
+  
+
+    {{ govukSummaryList({
+      classes: "govuk-summary-list--no-border",
+      rows: [
+        {
+          key: {
+            text: "Claimant address"
+          },
+          value: {
+            html: "1 High Street<br>Manchester<br>M1 1AA"
+          }
+        }
+        
+      ]
+    }) }}
+
+
+    <!-- {
+          key: {
+            text: "DP address"
+          },
+          value: {
+            html: "10 Market Road<br>Liverpool<br>L1 1BB"
+          }
+        } -->
+
+    {{ govukRadios({
+      name: "addressUpdateChoice",
+      fieldset: {
+        legend: {
+          text: "Do you need to update the address?",
+          classes: "govuk-fieldset__legend--m"
+        }
+      },
+      items: [
+        {
+          value: "claimant-address",
+          text: "Yes"
+        },
+        {
+          value: "dp-address",
+          text: "No"
+        }
+      ]
+    }) }}
+
+    {{ govukButton({
+      text: "Continue"
+    }) }}
+
+  </div>
+</div>
+</form>
+
+{% endblock %}

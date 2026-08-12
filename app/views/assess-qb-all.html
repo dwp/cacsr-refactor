@@ -1,0 +1,104 @@
+{% extends "layouts/agent-main.html" %}
+
+{% block pageTitle %}
+  Qualifying benefit – {{ serviceName }}
+{% endblock %}
+
+{% block containerStart %}
+  {{ govukBackLink({
+    text: "Back",
+    href: "javascript:window.history.back()"
+  }) }}
+{% endblock %}
+
+{% block content %}
+
+{% from "govuk/components/radios/macro.njk" import govukRadios %}
+{% from "govuk/components/date-input/macro.njk" import govukDateInput %}
+{% from "govuk/components/input/macro.njk" import govukInput %}
+
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-two-thirds">
+
+    <form action="next-page" methoduk-heading-l">
+        <h1 class="govuk-heading-l">Check the customer's qualifying benefit details
+      </h1>
+
+      <!-- <p class="govuk-hint">
+        Select the qualifying benefit and enter the relevant award information.
+      </p> -->
+
+      {{ govukRadios({
+        idPrefix: "qualifyingBenefit",
+        name: "qualifyingBenefit",
+        fieldset: {
+          legend: {
+            text: "Qualifying benefit",
+            classes: "govuk-fieldset__legend--m"
+          }
+        },
+        items: [
+          {
+            value: "AA",
+            text: "Attendance Allowance (AA)"
+          },
+          {
+            value: "CAA",
+            text: "Constant Attendance Allowance (CAA)"
+          },
+          {
+            value: "DLA",
+            text: "Disability Living Allowance (DLA)"
+          },
+          {
+            value: "DLA Lower",
+            text: "Disability Living Allowance lower rate care component (DLA Lower)"
+          },
+          {
+            value: "PIP",
+            text: "Personal Independence Payment (PIP)"
+          },
+          {
+            value: "CDP",
+            text: "Child Disability Payment (CDP)"
+          },
+          {
+            value: "ADP",
+            text: "Adult Disability Payment (ADP)"
+          }
+        ]
+      }) }}
+
+      {{ govukDateInput({
+        id: "awardStartDate",
+        namePrefix: "awardStartDate",
+        fieldset: {
+          legend: {
+            text: "Benefit start date",
+            classes: "govuk-fieldset__legend--m"
+          }
+        }
+      }) }}
+
+      {{ govukDateInput({
+        id: "awardEndDate",
+        namePrefix: "awardEndDate",
+        fieldset: {
+          legend: {
+            text: "Benefit decision date",
+            classes: "govuk-fieldset__legend--m"
+          }
+        }
+      }) }}
+
+        {{ govukButton({
+          text: "Continue"
+        }) }}
+
+
+    </form>
+
+  </div>
+</div>
+
+{% endblock %}

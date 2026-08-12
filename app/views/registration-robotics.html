@@ -1,0 +1,312 @@
+{% extends "layouts/agent-main.html" %}
+
+{% block pageTitle %}
+  Question page template – {{ serviceName }} – GOV.UK Prototype Kit
+{% endblock %}
+
+{% block containerStart %}
+  {{ govukBackLink({
+    text: "Back",
+    href: "javascript:window.history.back()"
+  }) }}
+{% endblock %} 
+
+{% block content %}
+
+
+      <form class="form" action="registration-claim" method="post">
+        <dl class="govuk-summary-list">
+
+    <dt class="govuk-heading-l">
+      Personal details
+    </dt>
+    <dd class="govuk-summary-list__actions">
+      <a class="govuk-link" href="registration-robotics-input"govuk-visually-hidden"> Change</span>
+      </a>
+    </dd>
+
+
+</dl>
+
+
+        <dl class="govuk-summary-list">
+    <h2 class="govuk-heading-m">
+      Review customer details
+    </h2>
+    <dd class="govuk-summary-list__actions">
+      <a class="govuk-link" href="registration-customer-input"govuk-visually-hidden"> Change</span>
+      </a>
+    </dd>
+
+
+</dl>
+
+
+
+        {% from "govuk/components/summary-list/macro.njk" import govukSummaryList %}
+
+        
+
+        <!-- Customer details -->
+
+        {{ govukSummaryList({
+          rows: [
+          {
+              key: {
+                text: "National Insurance Number"
+              },
+              value: {
+                text: "PJ 12 34 56 C"
+              }
+            },  
+          {
+              key: {
+                text: "Title"
+              },
+              value: {
+                text: "Ms"
+              }
+            },
+            {
+              key: {
+                text: "Name"
+              },
+              value: {
+                text: "Sarah Philips"
+              }
+            },
+            {
+              key: {
+                text: "Date of birth"
+              },
+              value: {
+                text: "5 January 1978"
+              }
+            },
+            {
+              key: {
+                text: "Address"
+              },
+              value: {
+                html: "72 Guild Street<br>London<br>SE23 6FH"
+              }
+            },
+            {
+              key: {
+                text: "Phone number"
+              },
+              value: {
+                html: '<p class="govuk-body">07700 900457</p>'
+              }
+            }
+          ]
+        }) }}
+
+
+<!-- 
+
+        ,
+            {
+              key: {
+                text: "Date of claim"
+              },
+              value: {
+                html: '<p class="govuk-body">05 December 2025<p>'
+              }
+            }, -->
+
+
+        <!-- Partner details -->
+
+        <br>
+
+    <dl class="govuk-summary-list">
+
+    <dt class="govuk-heading-m">
+      Partner details
+    </dt>
+    <dd class="govuk-summary-list__actions">
+      <a class="govuk-link" href="registration-partner-input"govuk-visually-hidden"> Change</span>
+      </a>
+    </dd>
+  </dl>
+
+        {% from "govuk/components/summary-list/macro.njk" import govukSummaryList %}
+
+
+        {{ govukSummaryList({
+          rows: [
+          {
+              key: {
+                text: "National Insurance Number"
+              },
+              value: {
+                text: "AB 98 76 54 C"
+              }
+            },  
+          {
+              key: {
+                text: "Title"
+              },
+              value: {
+                text: "Mr"
+              }
+            },
+            {
+              key: {
+                text: "Name"
+              },
+              value: {
+                text: "John Locke"
+              }
+            }
+          ]
+        }) }}
+
+        <!-- {{ govukRadios({
+  name: "haveYouCompletedThisSectionA",
+  fieldset: {
+    legend: {
+      text: "Have you completed this section?",
+      isPageHeading: false,
+      classes: "govuk-fieldset__legend--m"
+    }
+  },
+  items: [
+    {
+      value: "yes",
+      text: "Yes, I’ve completed this section"
+    },
+    {
+      value: "no",
+      text: "No, I’ll come back to it later"
+    }
+  ]
+}) }} -->
+
+
+
+
+        
+
+
+
+
+<br><br>
+        <!-- dependant details -->
+
+
+           <dl class="govuk-summary-list">
+
+    <dt class="govuk-heading-m">
+      dependant details
+    </dt>
+    <dd class="govuk-summary-list__actions">
+      <a class="govuk-link" href="registration-dp-input"govuk-visually-hidden"> Change</span>
+      </a>
+    </dd>
+  </dl>
+
+
+
+        {% from "govuk/components/summary-list/macro.njk" import govukSummaryList %}
+
+
+        {{ govukSummaryList({
+          rows: [
+          {
+              key: {
+                text: "National Insurance Number"
+              },
+              value: {
+                text: "PJ 12 34 56 C"
+              }
+            },  
+          {
+              key: {
+                text: "Title"
+              },
+              value: {
+                text: "Ms"
+              }
+            },
+            {
+              key: {
+                text: "Name"
+              },
+              value: {
+                text: "Holly Jones"
+              }
+            },
+            {
+              key: {
+                text: "Date of birth"
+              },
+              value: {
+                text: "5 January 2005"
+              }
+            },
+            {
+              key: {
+                text: "Address"
+              },
+              value: {
+                html: "72 Guild Street<br>London<br>SE23 6FH"
+              }
+            },
+            {
+              key: {
+                text: "Relationship"
+              },
+              value: {
+                html: '<p class="govuk-body">Child</p>'
+              }
+            }
+          ]
+        }) }}
+
+         <p>
+          <a href="https://design-system.service.gov.uk">View previous dependants</a>
+        </p>
+
+
+{% from "govuk/components/button/macro.njk" import govukButton %}
+{% from "govuk/components/radios/macro.njk" import govukRadios %}
+<!-- 
+{{ govukRadios({
+  name: "haveYouCompletedThisSectionB",
+  fieldset: {
+    legend: {
+      text: "Have you completed this section?",
+      isPageHeading: false,
+      classes: "govuk-fieldset__legend--m"
+    }
+  },
+  items: [
+    {
+      value: "yes",
+      text: "Yes, I’ve completed this section"
+    },
+    {
+      value: "no",
+      text: "No, I’ll come back to it later"
+    }
+  ]
+}) }} -->
+
+
+
+        <p class="govuk-body">Check the details of the customer and the dependant before registering the claim </p>
+
+
+        
+
+        {{ govukButton({
+          text: "Continue"
+        }) }}
+
+        
+
+      </form>
+
+{% endblock %}

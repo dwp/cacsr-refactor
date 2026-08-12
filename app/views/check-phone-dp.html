@@ -1,0 +1,82 @@
+{% extends "layouts/agent-main.html" %}
+
+{% block pageTitle %}
+  Edit claim information – {{ serviceName }}
+{% endblock %}
+
+{% block containerStart %}
+  {{ govukBackLink({
+    text: "Back",
+    href: "javascript:window.history.back()"
+  }) }}
+{% endblock %}
+
+{% block content %}
+
+{% from "govuk/components/radios/macro.njk" import govukRadios %}
+{% from "govuk/components/input/macro.njk" import govukInput %}
+{% from "govuk/components/summary-list/macro.njk" import govukSummaryList %}
+
+<div class="govuk-grid-row">
+
+      <h1 class="govuk-heading-l">
+        Check the dependant's phone number
+      </h1>
+
+      {{ govukSummaryList({
+        classes: "govuk-summary-list--no-border",
+        rows: [
+          {
+            key: {
+              text: "Phone number"
+            },
+            value: {
+              html: "07123 456789"
+            }
+          }
+        ]
+      }) }}
+
+      <p class="govuk-heading-m">
+        Do you need to update this number?
+      </p>
+
+      {% set noHtml %}
+        {{ govukInput({
+          id: "searchlightPhoneNumber",
+          name: "searchlightPhoneNumber",
+          classes: "govuk-!-width-two-thirds",
+          label: {
+            text: "Phone number"
+          }
+        }) }}
+      {% endset %}
+
+      {{ govukRadios({
+        name: "phoneNumberMatch",
+        items: [
+          {
+            value: "Yes",
+            text: "Yes",
+            conditional: {
+              html: noHtml
+            }
+          },
+          {
+            value: "No",
+            text: "No"
+            
+          }
+        ]
+      }) }}
+
+      {{ govukButton({
+        text: "Continue"
+      }) }}
+
+    </form>
+
+  </div>
+</div>
+
+{% endblock %}

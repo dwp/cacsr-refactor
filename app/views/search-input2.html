@@ -1,0 +1,135 @@
+{% extends "layouts/agent-main.html" %}
+
+{% block pageTitle %}
+  Question page template – {{ serviceName }} – GOV.UK Prototype Kit
+{% endblock %}
+
+{% block containerStart %}
+  {{ govukBackLink({
+    text: "Back",
+    href: "javascript:window.history.back()"
+  }) }}
+{% endblock %}
+
+{% block content %}
+
+
+      <form class="form" action="registration-1" method="post">
+
+      {% from "govuk/components/radios/macro.njk" import govukRadios %}
+      <h1 class="govuk-heading-l">Check the claimant's details against Searchlight</h1>
+<dl class="govuk-summary-list">
+        
+  
+        <div class="govuk-summary-list__row">
+          <dt class="govuk-summary-list__key">
+            Full name
+          </dt>
+          <dd class="govuk-summary-list__value">
+            
+              Ms Melissa Gentles
+            
+          </dd>
+          
+        </div>
+        <div class="govuk-summary-list__row">
+          <dt class="govuk-summary-list__key">
+            Date of birth
+          </dt>
+          <dd class="govuk-summary-list__value">
+            
+              1
+              January
+              2000
+
+              
+                <strong class="govuk-tag govuk-tag--green govuk-!-margin-left-4">
+                  Verified
+                </strong>
+              
+            
+          </dd>
+          
+        </div>
+
+
+
+        <div class="govuk-summary-list__row">
+          <dt class="govuk-summary-list__key">
+            Phone number
+          </dt>
+          <dd class="govuk-summary-list__value">
+            
+              07537645322
+
+          
+              
+            
+          </dd>
+          
+        </div>
+        
+      </dl>
+
+
+
+      {{ govukRadios({
+  idPrefix: "hasPartner",
+  name: "hasPartner",
+  fieldset: {
+    legend: {
+      text: "Do these match the details held on searchlight",
+      classes: "govuk-fieldset__legend--m"
+    }
+  },
+  items: [
+    {
+      value: "Yes",
+      text: "Yes"
+    },
+    {
+      value: "No",
+      text: "No"
+    }
+  ]
+}) }}
+
+
+
+
+
+
+      <!-- 
+      <p> Name: <b>Melissa Gentles</b></p>
+      <p>National Insurance number: <b>NC 12 34 56 C</b></p>
+      <p>Date of birth: <b>23 January 2003</b></p> -->
+ 
+      <!-- <p class="govuk-heading-m"><b>Are these details correct?</b></p>
+            
+    {{ govukRadios({
+      name: "validSelection",
+  items: [
+    {
+      value: "Yes",
+      text: "Yes"
+    
+    },
+    {
+      value: "No",
+      text: "No"
+    
+    }
+  ]
+}) }} -->
+
+
+
+
+        {{ govukButton({
+          text: "Continue"
+        }) }}
+
+      </form>
+
+
+{% endblock %}

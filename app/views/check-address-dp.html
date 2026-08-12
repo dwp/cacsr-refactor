@@ -1,0 +1,164 @@
+{% extends "layouts/agent-main.html" %}
+
+{% block pageTitle %}
+  Edit claim information – {{ serviceName }}
+{% endblock %}
+
+{% block containerStart %}
+  {{ govukBackLink({
+    text: "Back",
+    href: "javascript:window.history.back()"
+  }) }}
+{% endblock %}
+
+{% block content %}
+
+<!-- <div class="govuk-grid-row">
+{% from "govuk/components/radios/macro.njk" import govukRadios %}
+
+{% set noHtml %}
+
+<p class="govuk-heading-s">Customer address</p>
+
+<div class="govuk-form-group">
+  <label class="govuk-label" for="claimAddress1">
+    Address line 1
+  </label>
+  <input class="govuk-input govuk-!-width-full"
+    id="claimAddress1"
+    name="claimAddress1"
+    type="text">
+</div>
+
+<div class="govuk-form-group">
+  <label class="govuk-label" for="claimAddress2">
+    Address line 2 (optional)
+  </label>
+  <input class="govuk-input govuk-!-width-full"
+    id="claimAddress2"
+    name="claimAddress2"
+    type="text">
+</div>
+
+<div class="govuk-form-group">
+  <label class="govuk-label" for="claimAddress3">
+    Address line 3
+  </label>
+  <input class="govuk-input govuk-!-width-full"
+    id="claimAddress3"
+    name="claimAddress3"
+    type="text">
+</div>
+
+<div class="govuk-form-group">
+  <label class="govuk-label" for="claimAddress4">
+    Address line 4 (optional)
+  </label>
+  <input class="govuk-input govuk-!-width-full"
+    id="claimAddress4"
+    name="claimAddress4"
+    type="text">
+</div>
+
+<div class="govuk-form-group">
+  <label class="govuk-label" for="claimCountry">
+    Country
+  </label>
+  <input class="govuk-input govuk-input--width-20"
+    id="claimCountry"
+    name="claimCountry"
+    type="text">
+</div>
+
+{% endset %}
+
+{{ govukRadios({
+  name: "addressMatch",
+  fieldset: {
+    legend: {
+      text: "Does the address match Searchlight?",
+      classes: "govuk-fieldset__legend--l",
+      isPageHeading: true
+    }
+  },
+  items: [
+    {
+      value: "Yes",
+      text: "Yes"
+    },
+    {
+      value: "No",
+      text: "No",
+      conditional: {
+        html: noHtml
+      }
+    }
+  ]
+}) }} -->
+
+
+
+
+
+    <form class="form" action="registration-3" method="post">
+
+
+
+
+{% from "govuk/components/input/macro.njk" import govukInput %}
+
+<h1 class="govuk-heading-l">
+  Enter the dependant's address
+</h1>
+
+{{ govukInput({
+  id: "claimAddress1",
+  name: "claimAddress1",
+  label: {
+    text: "Address line 1"
+  },
+  value: "10 Downing Street"
+}) }}
+
+{{ govukInput({
+  id: "claimAddress2",
+  name: "claimAddress2",
+  label: {
+    text: "Address line 2 (optional)"
+  },
+  value: "Westminster"
+}) }}
+
+{{ govukInput({
+  id: "claimAddress3",
+  name: "claimAddress3",
+  label: {
+    text: "Address line 3"
+  },
+  value: "London"
+}) }}
+
+{{ govukInput({
+  id: "claimAddress4",
+  name: "claimAddress4",
+  label: {
+    text: "Address line 4 (optional)"
+  },
+  value: ""
+}) }}
+
+{{ govukInput({
+  id: "claimCountry",
+  name: "claimCountry",
+  classes: "govuk-input--width-20",
+  label: {
+    text: "Country"
+  },
+  value: "United Kingdom"
+}) }}
+
+{{ govukButton({
+  text: "Continue"
+}) }}
+
+{% endblock %}

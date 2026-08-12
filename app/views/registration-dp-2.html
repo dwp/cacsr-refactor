@@ -1,0 +1,230 @@
+{% extends "layouts/agent-main.html" %}
+
+{% block pageTitle %}
+  Question page template – {{ serviceName }} – GOV.UK Prototype Kit
+{% endblock %}
+
+{% block containerStart %}
+  {{ govukBackLink({
+    text: "Back",
+    href: "javascript:window.history.back()"
+  }) }}
+{% endblock %}
+
+{% block content %}
+
+
+      <form class="form" action="registration-3" method="post">
+
+      {% from "govuk/components/radios/macro.njk" import govukRadios %}
+      <h1 class="govuk-heading-l">Check the dependant's details against Searchlight</h1>
+
+
+
+
+{{ govukSummaryList({
+          rows: [
+          {
+              key: {
+                text: "National Insurance Number"
+              },
+              value: {
+                text: "PJ 12 34 56 C"
+              },
+              actions: {
+                items: [
+                  {
+                    href: "#",
+                    text: "Change",
+                    visuallyHiddenText: "contact details"
+                  }
+                ]
+              }
+            },  
+          {
+              key: {
+                text: "Title"
+              },
+              value: {
+                text: "Ms"
+              },
+
+              actions: {
+                items: [
+                  {
+                    href: "#",
+                    text: "Change",
+                    visuallyHiddenText: "contact details"
+                  }
+                ]
+              }
+            },
+            {
+              key: {
+                text: "Name"
+              },
+              value: {
+                text: "Sarah Philips"
+              },
+              actions: {
+                items: [
+                  {
+                    href: "#",
+                    text: "Change",
+                    visuallyHiddenText: "name"
+                  }
+                ]
+              }
+            },
+            {
+              key: {
+                text: "Date of birth"
+              },
+              value: {
+                text: "5 January 1978"
+              },
+              actions: {
+                items: [
+                  {
+                    href: "#",
+                    text: "Change",
+                    visuallyHiddenText: "date of birth"
+                  }
+                ]
+              }
+            },
+            {
+              key: {
+                text: "Address"
+              },
+              value: {
+                html: "72 Guild Street<br>London<br>SE23 6FH"
+              },
+              actions: {
+                items: [
+                  {
+                    href: "#",
+                    text: "Change",
+                    visuallyHiddenText: "address"
+                  }
+                ]
+              }
+            },
+
+            {
+              key: {
+                text: "Phone number"
+              },
+              value: {
+                html: '<p class="govuk-body">07700 900457</p>'
+              },
+              actions: {
+                items: [
+                  {
+                    href: "#",
+                    text: "Change",
+                    visuallyHiddenText: "contact details"
+                  }
+                ]
+              }
+            }
+          ]
+        }) }}
+
+
+
+
+<!-- <dl class="govuk-summary-list">
+        
+  
+        <div class="govuk-summary-list__row">
+          <dt class="govuk-summary-list__key">
+            Full name
+          </dt>
+          <dd class="govuk-summary-list__value">
+            
+              Ms Melissa Gentles
+            
+          </dd>
+          
+        </div>
+        <div class="govuk-summary-list__row">
+          <dt class="govuk-summary-list__key">
+            Date of birth
+          </dt>
+          <dd class="govuk-summary-list__value">
+            
+              1
+              January
+              2000
+
+              
+                <strong class="govuk-tag govuk-tag--green govuk-!-margin-left-4">
+                  Verified
+                </strong>
+              
+            
+          </dd>
+          
+        </div>
+
+
+
+        <div class="govuk-summary-list__row">
+          <dt class="govuk-summary-list__key">
+            Phone number
+          </dt>
+          <dd class="govuk-summary-list__value">
+            
+              07537645322
+
+          
+              
+            
+          </dd>
+          
+        </div>
+        
+      </dl>
+ -->
+
+
+
+
+
+      <!-- 
+      <p> Name: <b>Melissa Gentles</b></p>
+      <p>National Insurance number: <b>NC 12 34 56 C</b></p>
+      <p>Date of birth: <b>23 January 2003</b></p> -->
+ 
+      <!-- <p class="govuk-heading-m"><b>Are these details correct?</b></p>
+            
+    {{ govukRadios({
+      name: "validSelection",
+  items: [
+    {
+      value: "Yes",
+      text: "Yes"
+    
+    },
+    {
+      value: "No",
+      text: "No"
+    
+    }
+  ]
+}) }} -->
+
+
+
+
+        {{ govukButton({
+          text: "Continue"
+        }) }}
+
+        <p class="govuk-body"><a href"">Search again</a></p>
+
+      </form>
+
+
+{% endblock %}

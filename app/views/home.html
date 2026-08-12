@@ -1,0 +1,399 @@
+{% extends "layouts/agent2.html" %}
+
+{% block pageTitle %}
+  Claim overview – {{ serviceName }}
+{% endblock %}
+
+{% block content %}
+
+{% from "govuk/components/task-list/macro.njk" import govukTaskList %}
+{% from "govuk/components/summary-list/macro.njk" import govukSummaryList %}
+{% from "govuk/components/button/macro.njk" import govukButton %}
+{% from "horizontal-navigation/macro.njk" import dwpHorizontalNavigation %}
+
+{% set completedStatus = {
+  tag: {
+    text: "Completed",
+    classes: "govuk-tag--green"
+  }
+} %}
+
+{% set notYetStartedStatus = {
+  tag: {
+    text: "Not yet started",
+    classes: "govuk-tag--grey"
+  }
+} %}
+
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-two-thirds"> 
+    <h1 class="govuk-heading-l">Claim overview</h1>
+
+    <!-- {{ dwpHorizontalNavigation({
+      selectedItem: "claim-overview",
+      items: [
+        {
+          text: "Claim overview",
+          href: "#",
+          id: "claim-overview"
+        },
+        {
+          text: "Contact history",
+          href: "#",
+          id: "contact-history"
+        },
+        {
+          text: "Find another claim",
+          href: "#",
+          id: "contact-history"
+        }
+      ]
+    }) }} -->
+
+<!-- 
+      {{ govukSummaryList({
+  card: {
+    title: {
+      text: "Claim summary"
+    },
+    actions: {
+      items: [
+        {
+          href: "#",
+          text: "Withdraw"
+        }
+      ]
+    }
+  },
+  rows: [
+    {
+      key: {
+        text: "Customer name"
+      },
+      value: {
+        text: "Melissa Gentles"
+      }
+    },
+    {
+      key: {
+        text: "Disabled person name"
+      },
+      value: {
+        text: "John Locke"
+      }
+    },
+    {
+      key: {
+        text: "Status"
+      },
+      value: {
+        text: "In progress"
+      }
+    },
+    {
+      key: {
+        text: "Management check status"
+      },
+      value: {
+        text: "No check required"
+      }
+    }
+  ]
+}) }} -->
+
+      <h2 class="govuk-heading-m govuk-!-margin-top-7">
+        View claim information
+      </h2>
+
+      {{ govukTaskList({
+        items: [
+          {
+            title: {
+              text: "Claim details"
+            },
+            href: "registration-claim"
+          },
+          {
+            title: {
+              text: "Claimant and partner details"
+            },
+            href: "registration-customer"
+          },
+          {
+            title: {
+              text: "Disabled person's details"
+            },
+            href: "registration-dp"
+          }
+        ]
+      }) }}
+
+      <h2 class="govuk-heading-m govuk-!-margin-top-7">
+        Check before you start
+      </h2>
+
+
+
+
+
+
+{% if data['decisionStart'] %}
+
+  {{ govukSummaryList({
+    rows: [
+      {
+        key: {
+          text: "Date claim received"
+        },
+        value: {
+          text: "1 July 2026"
+        }
+      },
+      {
+        key: {
+          text: "Date of claim"
+        },
+        value: {
+          text: "5 July 2026"
+        },
+
+        actions: {
+          items: [
+            {
+              href: "decision-start",
+              text: "Change",
+              visuallyHiddenText: "decision"
+            }
+          ]
+        }
+      },
+      {
+        key: {
+          text: "Date of death"
+        },
+        value: {
+              html: "<a href='decision-start'>Add a date of death</a>"
+        }
+      },
+      {
+        key: {
+          text: "Banking details"
+        },
+        value: {
+              html: "<a href='decision-start'>Add bank details</a>"
+        }
+      },
+      {
+        key: {
+          text: "Benefit details"
+        },
+        value: {
+              html: "<a href='decision-start'>Add benefit details</a>"
+        }
+      },
+      {
+        key: {
+          text: "Decision"
+        },
+        value: {
+          text: data['decisionStart']
+        },
+        actions: {
+          items: [
+            {
+              href: "decision-start",
+              text: "Change",
+              visuallyHiddenText: "decision"
+            }
+          ]
+        }
+      }
+    ]
+  }) }}
+
+
+{% else %}
+
+  {{ govukSummaryList({
+    rows: [
+      {
+        key: {
+          text: "Date claim received"
+        },
+        value: {
+          text: "1 July 2026"
+        },
+        actions: {
+          items: [
+            {
+              href: "decision-start",
+              text: "Change",
+              visuallyHiddenText: "decision"
+            }
+          ]
+        }
+      },
+      {
+        key: {
+          text: "Date of claim"
+        },
+        value: {
+          text: "5 July 2026"
+        },
+        
+        
+        actions: {
+          items: [
+            {
+              href: "decision-start",
+              text: "Change",
+              visuallyHiddenText: "decision"
+            }
+          ]
+        }
+
+      },
+      {
+        key: {
+          text: "Date of death"
+        },
+        value: {
+              html: "<a href='decision-start'>Add a date of death</a>"
+        }
+      },
+      {
+        key: {
+          text: "Banking details"
+        },
+        value: {
+              html: "<a href='decision-start'>Add bank details</a>"
+        }
+      },
+      {
+        key: {
+          text: "Benefit details"
+        },
+        value: {
+              html: "<a href='decision-start'>Specify benefits information</a>"
+        }
+      },
+      {
+        key: {
+          text: "Decision"
+        },
+        value: {
+              html: "<a href='decision-start'>Select a decision</a>"
+        }
+      }
+    ]
+  }) }}
+
+{% endif %}
+      
+
+
+{% if data['decisionStart'] == 'Allow' %}
+
+  <h2 class="govuk-heading-m govuk-!-margin-top-7">
+    Process your decision and payments
+  </h2>
+
+  {{ govukTaskList({
+    items: [
+      {
+        title: {
+          text: "Miscellaneous"
+        },
+        href: "#",
+        status: completedStatus
+      },
+      {
+        title: {
+          text: "Method of payment"
+        },
+        href: "#",
+        status: notYetStartedStatus
+      },
+      {
+        title: {
+          text: "Decisions and payments"
+        },
+        href: "#",
+        status: notYetStartedStatus
+      },
+      {
+        title: {
+          text: "Ongoing payment details"
+        },
+        href: "#",
+        status: notYetStartedStatus
+      },
+      {
+        title: {
+          text: "Arrears"
+        },
+        href: "#",
+        status: notYetStartedStatus
+      }
+    ]
+  }) }}
+
+  {{ govukButton({
+    text: "Continue"
+  }) }}
+
+{% elif data['decisionStart'] == 'Disallow' %}
+
+  <h2 class="govuk-heading-m govuk-!-margin-top-7">
+    Process your decision
+  </h2>
+
+  {{ govukTaskList({
+    items: [
+      {
+        title: {
+          text: "Miscellaneous"
+        },
+        href: "#",
+        status: completedStatus
+      },
+      {
+        title: {
+          text: "Disallowance details"
+        },
+        href: "#",
+        status: notYetStartedStatus
+      },
+      {
+        title: {
+          text: "Decision outcome"
+        },
+        href: "#",
+        status: notYetStartedStatus
+      }
+    ]
+  }) }}
+
+  {{ govukButton({
+    text: "Continue"
+  }) }}
+
+{% else %}
+
+  <h2 class="govuk-heading-m govuk-!-margin-top-7">
+    Process your decision and payments
+  </h2>
+
+  <p class="govuk-body">
+    Select a decision to continue.
+  </p>
+
+{% endif %}
+
+    </div>
+
+  </div>
+
+</div>
+
+{% endblock %}

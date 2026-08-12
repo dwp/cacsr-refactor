@@ -1,0 +1,50 @@
+{% extends "layouts/agent.html" %}
+
+{% block pageTitle %}
+  Question page template – {{ serviceName }} – GOV.UK Prototype Kit
+{% endblock %}
+
+{% block containerStart %}
+  {{ govukBackLink({
+    text: "Back",
+    href: "javascript:window.history.back()"
+  }) }}
+{% endblock %}
+
+{% block content %}
+
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds">
+
+      <form class="form" action="home" method="post">
+
+
+      {% from "govuk/components/radios/macro.njk" import govukRadios %}
+      <h1 class="govuk-heading-l">Choose a decision</h1>
+
+    {{ govukRadios({
+      name: "decisionStart",
+  items: [
+    {
+      value: "Allow",
+      text: "Allow"
+    
+    },
+    {
+      value: "Disallow",
+      text: "Disalow"
+    
+    }
+  ]
+}) }}
+
+        {{ govukButton({
+          text: "Continue"
+        }) }}
+
+      </form>
+
+    </div>
+  </div>
+
+{% endblock %}
