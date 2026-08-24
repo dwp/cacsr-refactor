@@ -1,0 +1,40 @@
+{% extends "layouts/agent-main.html" %}
+
+{% block pageTitle %}
+  Question page template – {{ serviceName }} – GOV.UK Prototype Kit
+{% endblock %}
+
+{% block containerStart %}
+  {{ govukBackLink({
+    text: "Back",
+    href: "javascript:window.history.back()"
+  }) }}
+{% endblock %}
+{% block content %}
+
+
+
+  
+      <form class="form" action="search-result-dp" method="post">
+
+<div class="govuk-form-group">
+  <h1 class="govuk-heading-l">Search for disabled person</h1>
+
+
+<div class="govuk-form-group">
+      <label class="govuk-label moj-search__label" for="search">
+        Enter disabled person's National Insurance number
+      </label>
+      <input class="govuk-input govuk-input--width-10 moj-search__input " id="search" name="carernino" type="search" aria-describedby="search-hint" value="">
+       <button type="submit" class="govuk-button govuk-button--secondary" href="search-result" data-module="govuk-button" style="margin-left: 6px;" data-govuk-button-init="">
+        Search
+      </button>
+    </div>
+
+
+    </div>
+  </div>
+
+    </form>
+
+{% endblock %}

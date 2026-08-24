@@ -1,0 +1,102 @@
+{% extends "layouts/agent-main.html" %}
+
+{% block pageTitle %}
+  Edit claim information – {{ serviceName }}
+{% endblock %}
+
+{% block containerStart %}
+  {{ govukBackLink({
+    text: "Back",
+    href: "javascript:window.history.back()"
+  }) }}
+{% endblock %}
+
+{% block content %}
+
+{% from "govuk/components/checkboxes/macro.njk" import govukCheckboxes %}
+{% from "govuk/components/summary-list/macro.njk" import govukSummaryList %}
+{% from "govuk/components/button/macro.njk" import govukButton %}
+
+
+{% set firstName = (data["first-name"] or "Csarina") | capitalize %}
+{% set lastName = (data["last-name"] or "Gentles") | capitalize %}
+{% set possessiveName = firstName + " " + lastName + "" %}
+
+
+<form class="form" action="check-overlapping-partner">
+    <h1 class="govuk-heading-l">Does {{possessiveName}} receive any of these benefits?
+  </h1>
+
+
+  {{ govukCheckboxes({
+    name: "overlappingBenefits",
+    hint: {
+      text: "Select all that apply."
+    },
+    items: [
+      {
+        value: "incapacity-benefit",
+        text: "Incapacity Benefit (IB)"
+      },
+      {
+        value: "incapacity-benefit-youth",
+        text: "Incapacity Benefit in Youth"
+      },
+      {
+        value: "contribution-based-jsa",
+        text: "Contribution-based Jobseeker's Allowance (JSA(C))"
+      },
+      {
+        value: "contribution-based-esa",
+        text: "Contribution-based Employment and Support Allowance (ESA(C))"
+      },
+      {
+        value: "state-pension",
+        text: "State Pension (SP)"
+      },
+      {
+        value: "severe-disablement-allowance",
+        text: "Severe Disablement Allowance (SDA)"
+      },
+      {
+        value: "maternity-allowance",
+        text: "Maternity Allowance (MA)"
+      },
+      {
+        value: "widows-benefit",
+        text: "Widows Benefit (WB)"
+      },
+      {
+        value: "bereavement-allowance",
+        text: "Bereavement Allowance"
+      },
+      {
+        value: "widowed-mothers-allowance",
+        text: "Widowed Mothers Allowance (WMA)"
+      },
+      {
+        value: "widowed-parents-allowance",
+        text: "Widowed Parents Allowance (WPA)"
+      },
+      {
+        value: "war-widows-pension",
+        text: "War Widows Pension (WWP)"
+      },
+      {
+        value: "industrial-death-benefit",
+        text: "Industrial Death Benefit (IDB)"
+      },
+      {
+        value: "unemployability-supplement",
+        text: "Unemployability Supplement (Un Supp) (when paid with IIDB or War Pension)"
+      }
+    ]
+  }) }}
+
+  {{ govukButton({
+    text: "Continue"
+  }) }}
+
+</form>
+
+{% endblock %}

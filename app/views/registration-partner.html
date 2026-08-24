@@ -13,107 +13,86 @@
 
 {% block content %}
 
-<div class="govuk-grid-row">
-  <div class="govuk-grid-column-two-thirds">
+{% set partnerFullName = (
+  (data['partnerTitle'] or 'Mr')
+  + ' '
+  + (data['partnerFirstName'] or 'Tom')
+  + ' '
+  + (data['partnerMiddleName'] or '')
+  + ' '
+  + (data['partnerLastName'] or 'Holland')
+)|trim %}
+
+{% set partnerNino = data['partnerNino'] or 'PJ 12 34 56 C' %}
+
+
+        <form class="form" action="/partner-details-redirect" method="post">
 
     <h1 class="govuk-heading-l">
       Check partner details
     </h1>
+{{ govukSummaryList({
+  rows: [
+    {
+      key: {
+        text: "National Insurance number"
+      },
+      value: {
+        text: partnerNino
+      },
+      actions: {
+        items: [{
+          href: "registration-partner-nino",
+          text: "Change",
+          visuallyHiddenText: "National Insurance number"
+        }]
+      }
+    },
+    {
+      key: {
+        text: "Full name"
+      },
+      value: {
+        text: partnerFullName
+      },
+      actions: {
+        items: [{
+          href: "registration-partner-name",
+          text: "Change",
+          visuallyHiddenText: "full name"
+        }]
+      }
+    }
+  ]
+}) }}
+<!-- 
 
-    {{ govukSummaryList({
-      rows: [
-        {
-          key: {
-            text: "National Insurance number"
+{% from "govuk/components/radios/macro.njk" import govukRadios %} -->
+<!-- 
+    <p class="govuk-heading-m">
+        Do you need to update these details?
+      </p>
+      {{ govukRadios({
+        classes: "govuk-radios--inline",
+        name: "partnerDetailsCheck",
+        items: [
+          {
+            value: "No",
+            text: "No"
           },
-          value: {
-            text: "PJ 12 34 56 C"
-          },
-          actions: {
-            items: [
-              {
-                href: "partner-details",
-                text: "Change",
-                visuallyHiddenText: "National Insurance number"
-              }
-            ]
+          {
+            value: "Yes",
+            text: "Yes"
+            
           }
-        },
-        {
-          key: {
-            text: "Title"
-          },
-          value: {
-            text: "Mr"
-          },
-          actions: {
-            items: [
-              {
-                href: "partner-details",
-                text: "Change",
-                visuallyHiddenText: "Title"
-              }
-            ]
-          }
-        },
-        {
-          key: {
-            text: "First name"
-          },
-          value: {
-            text: data.firstName or "Not provided"
-          },
-          actions: {
-            items: [
-              {
-                href: "partner-details",
-                text: "Change",
-                visuallyHiddenText: "First name"
-              }
-            ]
-          }
-        },
-        {
-          key: {
-            text: "Middle name"
-          },
-          value: {
-            text: data.middleName or "Not provided"
-          },
-          actions: {
-            items: [
-              {
-                href: "partner-details",
-                text: "Change",
-                visuallyHiddenText: "Middle name"
-              }
-            ]
-          }
-        },
-        {
-          key: {
-            text: "Last name"
-          },
-          value: {
-            text: data.lastName or "Not provided"
-          },
-          actions: {
-            items: [
-              {
-                href: "partner-details",
-                text: "Change",
-                visuallyHiddenText: "Last name"
-              }
-            ]
-          }
-        }
-      ]
-    }) }}
+        ]
+      }) }} -->
+
 
     <form method="post">
 
       {{ govukButton({
-        text: "Confirm and continue"
+        text: "Continue"
       }) }}
 
     </form>

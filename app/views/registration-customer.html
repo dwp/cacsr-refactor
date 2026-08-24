@@ -14,104 +14,89 @@
 {% block content %}
 
 
-      <form class="form" action="registration-3" method="post">
+      <form class="form" action="/check-customer-redirect" method="post">
 
       {% from "govuk/components/radios/macro.njk" import govukRadios %}
-      <h1 class="govuk-heading-l">Check claimant details</h1>
+      <h1 class="govuk-heading-l">Check carer's details</h1>
 
-
+      {% set fullName = (
+  (data['customerTitle'] or 'Ms')
+  + ' '
+  + (data['first-name'] or 'Melissa')
+  + ' '
+  + (data['middle-name'] or '')
+  + ' '
+  + (data['last-name'] or 'Gentles')
+)|trim %}
 
 
 {{ govukSummaryList({
-          rows: [
-          {
-              key: {
-                text: "National Insurance Number"
-              },
-              value: {
-                text: "PJ 12 34 56 C"
-              },
-              actions: {
-                items: [
-                  {
-                    href: "#",
-                    text: "Change",
-                    visuallyHiddenText: "contact details"
-                  }
-                ]
-              }
-            },  
-            {
-              key: {
-                text: "Full Name"
-              },
-              value: {
-                text: "Ms Melissa Gentles"
-              },
-              actions: {
-                items: [
-                  {
-                    href: "#",
-                    text: "Change",
-                    visuallyHiddenText: "name"
-                  }
-                ]
-              }
-            },
-            {
-              key: {
-                text: "Date of birth"
-              },
-              value: {
-                text: "5 January 1978"
-              },
-              actions: {
-                items: [
-                  {
-                    href: "#",
-                    text: "Change",
-                    visuallyHiddenText: "date of birth"
-                  }
-                ]
-              }
-            },
-            {
-              key: {
-                text: "Address"
-              },
-              value: {
-                html: "72 Guild Street<br>London<br>SE23 6FH"
-              },
-              actions: {
-                items: [
-                  {
-                    href: "#",
-                    text: "Change",
-                    visuallyHiddenText: "address"
-                  }
-                ]
-              }
-            },
+  rows: [
+    {
+      key: {
+        text: "National Insurance number"
+      },
+      value: {
+        text: data['nationalInsuranceNumber'] or "PJ 12 34 56 C"
+      }
+    },
+    {
+  key: {
+    text: "Full name"
+  },
+  value: {
+    text: fullName
+  },
+  actions: {
+        items: [{
+          href: "check-name-input",
+          text: "Change",
+          visuallyHiddenText: "name"
+        }]
+      }
+},
+    {
+      key: {
+        text: "Date of birth"
+      },
+      value: {
+        text: data['dateOfBirth'] or "5 January 1978"
+      }
+    },
+    {
+      key: {
+        text: "Address"
+      },
+      value: {
+        html: (data['select-an-address'] | replace(", ", "<br>"))
+          or "12 Coin Street <br> Bradford<br> BD24 5D"
+},
+      actions: {
+        items: [{
+          href: "check-address-lookup-c",
+          text: "Change",
+          visuallyHiddenText: "address"
+        }]
+      }
+    },
 
-            {
-              key: {
-                text: "Phone number"
-              },
-              value: {
-                html: '<p class="govuk-body">07700 900457</p>'
-              },
-              actions: {
-                items: [
-                  {
-                    href: "#",
-                    text: "Change",
-                    visuallyHiddenText: "contact details"
-                  }
-                ]
-              }
-            }
-          ]
-        }) }}
+    {
+      key: {
+        text: "Phone number"
+      },
+      value: {
+        text: data['phoneNumber'] or "07700 900457"
+      },
+      actions: {
+        items: [{
+          href: "check-phone-input",
+          text: "Change",
+          visuallyHiddenText: "contact details"
+        }]
+      }
+    }
+  ]
+}) }}
 
 
 
@@ -185,13 +170,13 @@
       name: "validSelection",
   items: [
     {
-      value: "Yes",
-      text: "Yes"
+      value: "No",
+      text: "No"
     
     },
     {
-      value: "No",
-      text: "No"
+      value: "Yes",
+      text: "Yes"
     
     }
   ]

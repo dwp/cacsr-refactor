@@ -1,0 +1,45 @@
+{% extends "layouts/agent-main.html" %}
+
+{% block pageTitle %}
+  Edit claim information – {{ serviceName }}
+{% endblock %}
+
+{% block containerStart %}
+  {{ govukBackLink({
+    text: "Back",
+    href: "javascript:window.history.back()"
+  }) }}
+{% endblock %}
+
+{% block content %}
+
+<form class="form" action="registration-partner" method="post">
+      <h1 class="govuk-heading-l">
+        Enter partner's Nino
+      </h1>
+
+       {{ govukInput({
+        label: {
+          text: "National Insurance number"
+        },
+        
+        id: "partnerNino",
+        classes: "govuk-input--width-10",
+        name: "partnerNino",
+        value: "PJ 12 34 56 C" or data[partnerNino]
+      }) }}
+
+
+
+  
+
+      {{ govukButton({
+        text: "Continue"
+      }) }}
+
+    </form>
+
+  </div>
+</div>
+
+{% endblock %}

@@ -1,7 +1,7 @@
 {% extends "layouts/agent-main.html" %}
 
 {% block pageTitle %}
-  Edit claim information – {{ serviceName }}
+  Address mismatch – {{ serviceName }}
 {% endblock %}
 
 {% block containerStart %}
@@ -13,152 +13,77 @@
 
 {% block content %}
 
-<!-- <div class="govuk-grid-row">
 {% from "govuk/components/radios/macro.njk" import govukRadios %}
+{% from "govuk/components/summary-list/macro.njk" import govukSummaryList %}
 
-{% set noHtml %}
+  <form class="form" action="/check-address-dp-redirect" method="post">
+  
+{% set firstName = (data["first-name-dp"] or "Csarina") | capitalize %}
+{% set lastName = (data["last-name-dp"] or "Gentles") | capitalize %}
 
-<p class="govuk-heading-s">Customer address</p>
-
-<div class="govuk-form-group">
-  <label class="govuk-label" for="claimAddress1">
-    Address line 1
-  </label>
-  <input class="govuk-input govuk-!-width-full"
-    id="claimAddress1"
-    name="claimAddress1"
-    type="text">
-</div>
-
-<div class="govuk-form-group">
-  <label class="govuk-label" for="claimAddress2">
-    Address line 2 (optional)
-  </label>
-  <input class="govuk-input govuk-!-width-full"
-    id="claimAddress2"
-    name="claimAddress2"
-    type="text">
-</div>
-
-<div class="govuk-form-group">
-  <label class="govuk-label" for="claimAddress3">
-    Address line 3
-  </label>
-  <input class="govuk-input govuk-!-width-full"
-    id="claimAddress3"
-    name="claimAddress3"
-    type="text">
-</div>
-
-<div class="govuk-form-group">
-  <label class="govuk-label" for="claimAddress4">
-    Address line 4 (optional)
-  </label>
-  <input class="govuk-input govuk-!-width-full"
-    id="claimAddress4"
-    name="claimAddress4"
-    type="text">
-</div>
-
-<div class="govuk-form-group">
-  <label class="govuk-label" for="claimCountry">
-    Country
-  </label>
-  <input class="govuk-input govuk-input--width-20"
-    id="claimCountry"
-    name="claimCountry"
-    type="text">
-</div>
-
-{% endset %}
-
-{{ govukRadios({
-  name: "addressMatch",
-  fieldset: {
-    legend: {
-      text: "Does the address match Searchlight?",
-      classes: "govuk-fieldset__legend--l",
-      isPageHeading: true
-    }
-  },
-  items: [
-    {
-      value: "Yes",
-      text: "Yes"
-    },
-    {
-      value: "No",
-      text: "No",
-      conditional: {
-        html: noHtml
-      }
-    }
-  ]
-}) }} -->
+{% if lastName | lower | last == "s" %}
+  {% set possessiveName = firstName + " " + lastName + "'" %}
+{% else %}
+  {% set possessiveName = firstName + " " + lastName + "'s" %}
+{% endif %}
 
 
-
-
-
-    <form class="form" action="registration-3" method="post">
-
-
-
-
-{% from "govuk/components/input/macro.njk" import govukInput %}
 
 <h1 class="govuk-heading-l">
-  Enter the dependant's address
+  Check {{ possessiveName}} address
 </h1>
 
-{{ govukInput({
-  id: "claimAddress1",
-  name: "claimAddress1",
-  label: {
-    text: "Address line 1"
-  },
-  value: "10 Downing Street"
-}) }}
+    {{ govukSummaryList({
+      classes: "govuk-summary-list--no-border",
+      rows: [
+        {
+          key: {
+            text: "Address"
+          },
+          value: {
+            html: "1 High Street<br>Manchester<br>M1 1AA"
+          }
+        }
+        
+      ]
+    }) }}
 
-{{ govukInput({
-  id: "claimAddress2",
-  name: "claimAddress2",
-  label: {
-    text: "Address line 2 (optional)"
-  },
-  value: "Westminster"
-}) }}
 
-{{ govukInput({
-  id: "claimAddress3",
-  name: "claimAddress3",
-  label: {
-    text: "Address line 3"
-  },
-  value: "London"
-}) }}
+    <!-- {
+          key: {
+            text: "DP address"
+          },
+          value: {
+            html: "10 Market Road<br>Liverpool<br>L1 1BB"
+          }
+        } -->
 
-{{ govukInput({
-  id: "claimAddress4",
-  name: "claimAddress4",
-  label: {
-    text: "Address line 4 (optional)"
-  },
-  value: ""
-}) }}
+    {{ govukRadios({
+      classes: "govuk-radios--inline",
+      name: "addressUpdateChoiceDp",
+      fieldset: {
+        legend: {
+          text: "Do you need to update this address?",
+          classes: "govuk-fieldset__legend--m"
+        }
+      },
+      items: [
+        {
+          value: "No",
+          text: "No"
+        },
+        {
+          value: "Yes",
+          text: "Yes"
+        }
+      ]
+    }) }}
 
-{{ govukInput({
-  id: "claimCountry",
-  name: "claimCountry",
-  classes: "govuk-input--width-20",
-  label: {
-    text: "Country"
-  },
-  value: "United Kingdom"
-}) }}
+    {{ govukButton({
+      text: "Continue"
+    }) }}
 
-{{ govukButton({
-  text: "Continue"
-}) }}
+</div>
+</form>
 
 {% endblock %}

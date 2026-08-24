@@ -13,23 +13,35 @@
 
 {% block content %}
 
-  <div class="govuk-grid-row">
-    <div class="govuk-grid-column-two-thirds">
 
-      <form class="form" action="/path/of/next/page" method="post">
+  
+
+      <form class="form" action="check-address-lookup-select-c" method="post">
 
         {% from "govuk/components/button/macro.njk" import govukButton %}
 {% from "govuk/components/input/macro.njk" import govukInput %}
 <div class="govuk-width-container">
-  <h1 class="govuk-heading-l">Enter the claimant's address from searchlight</h1>
+ 
+
+{% set firstName = (data["first-name"] or "Melissa") | capitalize %}
+{% set lastName = (data["last-name"] or "Gentles") | capitalize %}
+
+{% if lastName | lower | last == "s" %}
+  {% set possessiveName = firstName + " " + lastName + "'" %}
+{% else %}
+  {% set possessiveName = firstName + " " + lastName + "'s" %}
+{% endif %}
+
+
+<h1 class="govuk-heading-l">
+  Find {{ possessiveName }} address
+</h1>
+
   {{ govukInput({
     label: {
       text: "Postcode"
     },
     classes: "govuk-!-width-two-thirds",
-    hint: {
-      text: "For example, AA3 1AB."
-    },
     id: "postcode",
     name: "postcode"
   }) }}
@@ -39,9 +51,6 @@
       text: "Building number or name"
     },
     classes: "govuk-!-width-two-thirds",
-    hint: {
-      text: "For example, 15 or Prospect Cottage."
-    },
     id: "searchString",
     name: "searchString"
   }) }}
@@ -49,7 +58,8 @@
   {{ govukButton({
     text: "Find address"
   }) }}
-  <p class="govuk-body govuk-!-margin-bottom-0"><a href="#" class="govuk-link">Enter address manually</a></p>
+  
+  <p class="govuk-body govuk-!-margin-bottom-0"><a href="check-address-manual" class="govuk-link">Enter address manually</a></p>
 </div>
 
       </form>

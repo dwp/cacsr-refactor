@@ -1,0 +1,84 @@
+{% extends "layouts/agent-main.html" %}
+
+{% block pageTitle %}
+  Edit claim information – {{ serviceName }}
+{% endblock %}
+
+{% block containerStart %}
+  {{ govukBackLink({
+    text: "Back",
+    href: "javascript:window.history.back()"
+  }) }}
+{% endblock %}
+
+{% block content %}
+
+
+{% from "govuk/components/input/macro.njk" import govukInput %}
+
+
+{% from "govuk/components/checkboxes/macro.njk" import govukCheckboxes %}
+
+    <form class="form" action="name-input-redirect" method="post">
+
+    <h1 class="govuk-heading-l">
+      Enter the carer's full name
+    </h1>
+
+      {{ govukSelect({
+        id: "customer-title",
+        name: "customerTitle",
+        label: {
+          text: "Title"
+        },
+        items: [
+          { value: "Ms", text: "Ms", selected: true },
+          { value: "Mr", text: "Mr" },
+          { value: "Mrs", text: "Mrs" },
+          { value: "Miss", text: "Miss" },
+          { value: "Dr", text: "Dr" }
+        ]
+      }) }}
+
+      {{ govukInput({
+        label: {
+          text: "First name"
+        },
+        classes: "govuk-input--width-20",
+        id: "first-name",
+        name: "first-name",
+        spellcheck: false,
+        value: "Melissa"
+      }) }}
+
+
+            {{ govukInput({
+        label: {
+          text: "Middle name"
+        },
+        classes: "govuk-input--width-20",
+        id: "middle-name",
+        name: "middle-name",
+        spellcheck: false
+      }) }}
+
+
+            {{ govukInput({
+        label: {
+          text: "Last name"
+        },
+        classes: "govuk-input--width-20",
+        id: "last-name",
+        name: "last-name",
+        spellcheck: false,
+        value: "Gentles"
+      }) }}
+
+
+
+{{ govukButton({
+  text: "Continue"
+}) }}
+</form>
+
+{% endblock %}

@@ -1,0 +1,33 @@
+{% extends "layouts/agent-main.html" %}
+
+{% block pageTitle %}
+  Power of attorney – {{ serviceName }}
+{% endblock %}
+
+{% block containerStart %}
+  {{ govukBackLink({
+    text: "Back",
+    href: "javascript:window.history.back()"
+  }) }}
+{% endblock %}
+
+{% block content %}
+
+{% from "govuk/components/radios/macro.njk" import govukRadios %}
+
+    <form class="form" action="check-date-of-claim" method="post">
+      <h1 class= "govuk-heading-l"> You must issue a PRO517 letter</h1>
+
+      <p class="govuk-body">Because there is an appointee or power of attorney for the disabled person, you must manually send a notification that a claim has been made</p>
+  
+
+
+
+    {{ govukButton({
+      text: "Continue"
+    }) }}
+
+  </div>
+</div>
+
+{% endblock %}

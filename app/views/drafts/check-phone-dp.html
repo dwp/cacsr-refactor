@@ -17,10 +17,11 @@
 {% from "govuk/components/input/macro.njk" import govukInput %}
 {% from "govuk/components/summary-list/macro.njk" import govukSummaryList %}
 
-<div class="govuk-grid-row">
+
+    <form class="form" action="check-address" method="post">
 
       <h1 class="govuk-heading-l">
-        Check the dependant's phone number
+        Check the disabled person's phone number
       </h1>
 
       {{ govukSummaryList({
@@ -56,15 +57,12 @@
         name: "phoneNumberMatch",
         items: [
           {
-            value: "Yes",
-            text: "Yes",
-            conditional: {
-              html: noHtml
-            }
-          },
-          {
             value: "No",
             text: "No"
+          },
+          {
+            value: "Yes",
+            text: "Yes"
             
           }
         ]

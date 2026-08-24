@@ -83,12 +83,12 @@
   },
   items: [
     {
-      value: "Yes",
-      text: "Yes"
+      value: "No",
+      text: "No"
     },
     {
-      value: "No",
-      text: "No",
+      value: "Yes",
+      text: "Yes",
       conditional: {
         html: noHtml
       }
@@ -98,17 +98,27 @@
 
 
 
-
-
-    <form class="form" action="registration-3" method="post">
-
-
+{% if data['prototypeScenarioSelection'] == "Research tasks" %}
+ <form class="form" action="registration-customer" method="post">
+  {% else %}
+    <form class="form" action="registration-partner" method="post">
+{% endif %}
 
 
 {% from "govuk/components/input/macro.njk" import govukInput %}
 
+{% set firstName = (data["first-name"] or "Melissa") | capitalize %}
+{% set lastName = (data["last-name"] or "Gentles") | capitalize %}
+
+{% if lastName | lower | last == "s" %}
+  {% set possessiveName = firstName + " " + lastName + "'" %}
+{% else %}
+  {% set possessiveName = firstName + " " + lastName + "'s" %}
+{% endif %}
+
+
 <h1 class="govuk-heading-l">
-  Enter the claimant's address
+  Check {{ possessiveName }} address
 </h1>
 
 {{ govukInput({

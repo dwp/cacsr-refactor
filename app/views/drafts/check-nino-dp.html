@@ -16,12 +16,11 @@
 {% from "govuk/components/radios/macro.njk" import govukRadios %}
 {% from "govuk/components/input/macro.njk" import govukInput %}
 
-<div class="govuk-grid-row">
-  <div class="govuk-grid-column-two-thirds">
 
-    <form class="form" action="check-address" method="post">
+
+    <form class="form" action="registration-2" method="post">
     <h1 class="govuk-heading-l">
-      Check the claimant's NINO
+      Check the disabled person's NINO
     </h1>
 
     {% from "govuk/components/summary-list/macro.njk" import govukSummaryList %}
@@ -40,10 +39,7 @@
   ]
 }) }}
 
-</div>
-</div>
-
-    <p class="govuk-heading-m">Do you need to update the claimant's NINO?</p>
+    <p class="govuk-heading-m">Do you need to update the disabled person's NINO?</p>
 
     {% set noHtml %}
       {{ govukInput({
@@ -65,15 +61,12 @@
       },
       items: [
         {
-          value: "Yes",
-          text: "Yes"
+          value: "No",
+          text: "No"
         },
         {
-          value: "No",
-          text: "No",
-          conditional: {
-            html: noHtml
-          }
+          value: "Yes",
+          text: "Yes"
         }
       ]
     }) }}

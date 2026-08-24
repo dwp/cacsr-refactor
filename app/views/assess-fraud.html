@@ -15,30 +15,31 @@
 
 {% from "govuk/components/radios/macro.njk" import govukRadios %}
 
-<div class="govuk-grid-row">
-  <div class="govuk-grid-column-two-thirds">
+
+      <form class="form" action="assess-rival-carer" method="post">
+
+    {% set firstName = (data["first-name"] or "Melissa") | capitalize %}
+    {% set lastName = (data["last-name"] or "Gentles") | capitalize %}
+    {% set possessiveName = firstName + " " + lastName  %}
+
+
+<h1 class="govuk-heading-l">
+  Is there a CFEMS interest registered for {{ possessiveName }} on Searchlight?
+</h1>
+
 
       {{ govukRadios({
+        classes: "govuk-radios--inline",
         idPrefix: "fraudInterest",
         name: "fraudInterest",
-        fieldset: {
-          legend: {
-            text: "Is there a CFEMS interest or suspicion of fraud?",
-            isPageHeading: true,
-            classes: "govuk-fieldset__legend--l"
-          }
-        },
-        hint: {
-          text: "Check the relevant systems before making your selection."
-        },
         items: [
-          {
-            value: "Yes",
-            text: "Yes"
-          },
           {
             value: "No",
             text: "No"
+          },
+          {
+            value: "Yes",
+            text: "Yes"
           }
         ]
       }) }}

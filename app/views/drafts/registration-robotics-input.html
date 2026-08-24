@@ -13,7 +13,6 @@
 
 {% block content %}
 
-<div class="govuk-grid-row">
 
     <h1 class="govuk-heading-l">
       Edit personal details 
@@ -101,13 +100,12 @@
 
 <p class="govuk-heading-s">Customer address</p>
 
-<div class="govuk-grid-row">
-    <div class="govuk-grid-column-two-thirds">
+  
 
       <form method="post" action="address-start-date">
         <fieldset class="govuk-fieldset">
           <div class="govuk-form-group">
-            <label class="govuk-label" for="claimantAddress1">
+            <label class="govuk-label" for="carerAddress1">
               Address line 1
             </label>
             <input class="govuk-input govuk-!-width-full" id="claimAddress1" name="claimAddress1" type="text" value="">
@@ -262,7 +260,7 @@
 
 
       <h2 class="govuk-heading-m govuk-!-margin-top-8">
-        dependant details
+        disabled person details
       </h2>
 
 
@@ -279,8 +277,8 @@
 
 
       {{ govukSelect({
-        id: "dependant-title",
-        name: "dependantTitle",
+        id: "disabled person-title",
+        name: "disabled personTitle",
         label: {
           text: "Title"
         },
@@ -342,8 +340,8 @@
       
 
       {{ govukTextarea({
-        id: "dependant-address",
-        name: "dependantAddress",
+        id: "disabled person-address",
+        name: "disabled personAddress",
         label: {
           text: "Address"
         },
@@ -365,13 +363,13 @@
       }) }}
 
       <p class="govuk-body">
-        previous-dependants
+        previous-disabled persons
       </p>
 
   
 
       {{ govukButton({
-        text: "Save"
+        text: "Continue"
       }) }}
 
     </form>

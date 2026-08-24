@@ -1,0 +1,56 @@
+{% extends "layouts/agent-main.html" %}
+
+{% block pageTitle %}
+  Edit claim information – {{ serviceName }}
+{% endblock %}
+
+{% block containerStart %}
+  {{ govukBackLink({
+    text: "Back",
+    href: "javascript:window.history.back()"
+  }) }}
+{% endblock %}
+
+{% block content %}
+
+{% from "govuk/components/radios/macro.njk" import govukRadios %}
+{% from "govuk/components/input/macro.njk" import govukInput %}
+{% from "govuk/components/summary-list/macro.njk" import govukSummaryList %}
+
+
+    <form class="form" action="phone-confirm-redirect" method="post">
+
+      {% from "govuk/components/input/macro.njk" import govukInput %}
+{% set firstName = (data["first-name"] or "Melissa") | capitalize %}
+{% set lastName = (data["last-name"] or "Gentles") | capitalize %}
+
+
+{% if lastName | lower | last == "s" %}
+  {% set possessiveName = firstName + " " + lastName + "'" %}
+{% else %}
+  {% set possessiveName = firstName + " " + lastName + "'s" %}
+{% endif %}
+<h1 class="govuk-heading-l">
+  Enter {{ possessiveName }} phone number
+</h1>
+
+{{ govukInput({
+  id: "phoneNumber",
+  name: "phoneNumber",
+  type: "tel",
+  autocomplete: "tel",
+  classes: "govuk-input--width-20",
+  value: data['phoneNumber'] or "07700 900457"  
+}) }}
+
+
+      {{ govukButton({
+        text: "Continue"
+      }) }}
+
+    </form>
+
+  </div>
+</div>
+
+{% endblock %}

@@ -15,10 +15,10 @@
 
 {% from "govuk/components/radios/macro.njk" import govukRadios %}
 
-<div class="govuk-grid-row">
-  <div class="govuk-grid-column-two-thirds">
+    <form class="form" action="check-relationship" method="post">
 
-    {% set powerOfAttorneyHtml %}
+
+    <!-- {% set powerOfAttorneyHtml %}
 
       {{ govukRadios({
         idPrefix: "letterIssued",
@@ -31,42 +31,44 @@
         },
         items: [
           {
-            value: "Yes",
-            text: "Yes"
-          },
-          {
             value: "No",
             text: "No"
+          },
+          {
+            value: "Yes",
+            text: "Yes"
           }
         ]
       }) }}
 
-    {% endset %}
+    {% endset %} -->
 
     {{ govukRadios({
+      
       idPrefix: "powerOfAttorney",
       name: "powerOfAttorney",
       fieldset: {
         legend: {
-          text: "Does the claimant have power of attorney?",
+          text: "Is there an appointee or power of attorney for the disabled person?",
           isPageHeading: true,
           classes: "govuk-fieldset__legend--l"
         }
       },
       items: [
         {
-          value: "No",
-          text: "No"
+          value: "Yes",
+          text: "Yes"
         },
         {
-          value: "Yes",
-          text: "Yes",
-          conditional: {
-            html: powerOfAttorneyHtml
-          }
+          value: "No",
+          text: "No"
         }
       ]
     }) }}
+
+    {% from "govuk/components/warning-text/macro.njk" import govukWarningText %}
+
+
 
     {{ govukButton({
       text: "Continue"

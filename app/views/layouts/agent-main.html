@@ -3,9 +3,13 @@
 {% set bodyClasses = "agent-layout" %}
 
 {% block header %}
-  {{ govukHeader({
-    serviceName: "Carer's Allowance Agent Service"
-  }) }}
+{{
+    dwpHeader({
+        serviceName: serviceName,
+        serviceHref: "/",
+        container: true
+    })
+}}
 {% endblock %}
 
 

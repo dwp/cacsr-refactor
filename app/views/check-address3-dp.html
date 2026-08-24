@@ -16,11 +16,10 @@
 {% from "govuk/components/radios/macro.njk" import govukRadios %}
 {% from "govuk/components/summary-list/macro.njk" import govukSummaryList %}
 
-<div class="govuk-grid-row">
   <div class="govuk-grid-column-two-thirds">
 
     <h1 class="govuk-heading-l">
-      Check the dependant's address on Searchlight
+      Check the disabled person's address
     </h1>
 
     </div>
@@ -31,7 +30,7 @@
       rows: [
         {
           key: {
-            text: "dependant address"
+            text: "disabled person address"
           },
           value: {
             html: "1 High Street<br>Manchester<br>M1 1AA"
@@ -50,13 +49,13 @@
       },
       items: [
         {
-          value: "Yes",
-          text: "Yes"
+          value: "No",
+          text: "No"
         },
 
         {
           value: "none",
-          text: "No"
+          text: "Yes"
         }
       ]
     }) }}

@@ -13,10 +13,9 @@
 
 {% block content %}
 
-<div class="govuk-grid-row">
-
+<form class="form" action="search-dp" method="post">
       <h1 class="govuk-heading-l">
-        Partner details
+        Enter partner details
       </h1>
 
        {{ govukInput({
@@ -51,7 +50,7 @@
           text: "First name"
         },
         classes: "govuk-input--width-20",
-        id: "first-name",
+        id: "partner-first-name",
         name: "firstName",
         autocomplete: "name",
         spellcheck: false
@@ -63,7 +62,7 @@
           text: "Middle name"
         },
         classes: "govuk-input--width-20",
-        id: "first-name",
+        id: "partner-middle-name",
         name: "firstName",
         autocomplete: "lastname",
         spellcheck: false
@@ -75,7 +74,7 @@
           text: "Last name"
         },
         classes: "govuk-input--width-20",
-        id: "first-name",
+        id: "partner-last-name",
         name: "firstName",
         autocomplete: "lastname",
         spellcheck: false
@@ -87,7 +86,7 @@
   
 
       {{ govukButton({
-        text: "Save"
+        text: "Continue"
       }) }}
 
     </form>

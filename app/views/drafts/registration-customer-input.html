@@ -13,7 +13,6 @@
 
 {% block content %}
 
-<div class="govuk-grid-row">
 
     <h1 class="govuk-heading-l">
       Customer personal details 
@@ -100,13 +99,12 @@
 
 <p class="govuk-heading-s">Customer address</p>
 
-<div class="govuk-grid-row">
-    <div class="govuk-grid-column-two-thirds">
+  
 
       <form method="post" action="address-start-date">
         <fieldset class="govuk-fieldset">
           <div class="govuk-form-group">
-            <label class="govuk-label" for="claimantAddress1">
+            <label class="govuk-label" for="carerAddress1">
               Address line 1
             </label>
             <input class="govuk-input govuk-!-width-full" id="claimAddress1" name="claimAddress1" type="text" value="">
@@ -180,7 +178,7 @@
   
 
       {{ govukButton({
-        text: "Save"
+        text: "Continue"
       }) }}
 
     </form>

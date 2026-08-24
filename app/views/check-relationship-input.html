@@ -1,0 +1,137 @@
+{% extends "layouts/agent-main.html" %}
+
+{% block pageTitle %}
+  Edit claim information – {{ serviceName }}
+{% endblock %}
+
+{% block containerStart %}
+  {{ govukBackLink({
+    text: "Back",
+    href: "javascript:window.history.back()"
+  }) }}
+{% endblock %}
+
+{% block content %}
+{% from "govuk/components/radios/macro.njk" import govukRadios %}
+
+    <form class="form" action="relationship-confirm-redirect" method="post">
+
+
+  <h1 class="govuk-heading-l">
+    Select the disabled person's relationship to the carer
+  </h1>
+
+  <div class="govuk-grid-row">
+<div class="govuk-grid-column-one-half">
+
+  <h2 class="govuk-heading-s">Partner or spouse</h2>
+  {{ govukRadios({
+    idPrefix: "partner",
+    name: "relationship",
+    items: [
+      { value: "husband", text: "Husband" },
+      { value: "wife", text: "Wife" },
+      { value: "civil-partner", text: "Civil partner" },
+      { value: "partner", text: "Partner" }
+    ]
+  }) }}
+
+  <h2 class="govuk-heading-s">Parents and grandparents</h2>
+  {{ govukRadios({
+    idPrefix: "parents",
+    name: "relationship",
+    items: [
+      { value: "mother", text: "Mother" },
+      { value: "father", text: "Father" },
+      { value: "stepmother", text: "Stepmother" },
+      { value: "stepfather", text: "Stepfather" },
+      { value: "grandmother", text: "Grandmother" },
+      { value: "grandfather", text: "Grandfather" }
+    ]
+  }) }}
+
+  <h2 class="govuk-heading-s">Children and grandchildren</h2>
+  {{ govukRadios({
+    idPrefix: "children",
+    name: "relationship",
+    items: [
+      { value: "son", text: "Son" },
+      { value: "daughter", text: "Daughter" },
+      { value: "stepson", text: "Stepson" },
+      { value: "stepdaughter", text: "Stepdaughter" },
+      { value: "grandson", text: "Grandson" },
+      { value: "granddaughter", text: "Granddaughter" }
+    ]
+  }) }}
+
+   <h2 class="govuk-heading-s">Friend or other</h2>
+  {{ govukRadios({
+    idPrefix: "other",
+    name: "relationship",
+    items: [
+      { value: "friend", text: "Friend" },
+      { value: "neighbour", text: "Neighbour" },
+      { value: "other", text: "Other" }
+    ]
+  }) }}
+ 
+
+  
+
+</div>
+
+<div class="govuk-grid-column-one-half">
+
+  <h2 class="govuk-heading-s">Extended family</h2>
+  {{ govukRadios({
+    idPrefix: "extended",
+    name: "relationship",
+    items: [
+      { value: "aunt", text: "Aunt" },
+      { value: "uncle", text: "Uncle" },
+      { value: "cousin", text: "Cousin" },
+      { value: "niece", text: "Niece" },
+      { value: "nephew", text: "Nephew" }
+    ]
+  }) }}
+
+  <h2 class="govuk-heading-s">Siblings</h2>
+  {{ govukRadios({
+    idPrefix: "siblings",
+    name: "relationship",
+    items: [
+      { value: "brother", text: "Brother" },
+      { value: "sister", text: "Sister" },
+      { value: "stepbrother", text: "Stepbrother" },
+      { value: "stepsister", text: "Stepsister" },
+      { value: "half-brother", text: "Half-brother" },
+      { value: "half-sister", text: "Half-sister" }
+    ]
+  }) }}
+
+  <h2 class="govuk-heading-s">In-laws</h2>
+  {{ govukRadios({
+    idPrefix: "inlaws",
+    name: "relationship",
+    items: [
+      { value: "mother-in-law", text: "Mother-in-law" },
+      { value: "father-in-law", text: "Father-in-law" },
+      { value: "brother-in-law", text: "Brother-in-law" },
+      { value: "sister-in-law", text: "Sister-in-law" },
+      { value: "son-in-law", text: "Son-in-law" },
+      { value: "daughter-in-law", text: "Daughter-in-law" }
+    ]
+  }) }}
+
+
+</div>
+
+</div> 
+  {{ govukButton({
+    text: "Continue"
+  }) }}
+
+
+</form>
+
+{% endblock %}

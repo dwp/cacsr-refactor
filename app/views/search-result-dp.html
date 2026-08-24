@@ -13,21 +13,50 @@
 
 {% block content %}
 
+      <!-- {% if data['prototypeScenarioSelection'] == "Pre-registration journey A" %}
+      <form class="form" action="check-name" method="post">
 
-      <form class="form" action="registration-1" method="post">
+        {% elif data['prototypeScenarioSelection'] == "Pre-registration journey B" %}
+        <form class="form" action="registration-customer" method="post">
 
-      {% from "govuk/components/radios/macro.njk" import govukRadios %}
-      <h1 class="govuk-heading-l">Check the claimant's details against Searchlight</h1>
-<dl class="govuk-summary-list">
-        
+          {% endif %}
+ -->
+
+<form class="form" action="/dp-search-redirect" method="post">
+
+ 
+
+
+
   
+   
+
+<div class="govuk-form-group">
+
+  <h1 class="govuk-heading-l">Search for disabled person</h1>
+
+<div class="govuk-form-group">
+      <label class="govuk-label moj-search__label" for="search">
+        Enter disabled person's National Insurance number
+      </label>
+      <input class="govuk-input govuk-input--width-10 moj-search__input " id="search" name="carernino" type="search" aria-describedby="search-hint" value="">
+      <button type="submit" class="govuk-button govuk-button--secondary" data-module="govuk-button" style="margin-left: 6px;" data-govuk-button-init="">
+        Search
+      </button>
+    </div>
+
+
+
+      <h1 class="govuk-heading-m">Claim details</h1>
+<dl class="govuk-summary-list">
+      
         <div class="govuk-summary-list__row">
           <dt class="govuk-summary-list__key">
             Full name
           </dt>
           <dd class="govuk-summary-list__value">
             
-              Ms Melissa Gentles
+              Ms Csarina Gentles
             
           </dd>
           
@@ -40,7 +69,7 @@
             
               1
               January
-              2000
+              2016
 
               
                 <strong class="govuk-tag govuk-tag--green govuk-!-margin-left-4">
@@ -56,15 +85,12 @@
 
         <div class="govuk-summary-list__row">
           <dt class="govuk-summary-list__key">
-            Phone number
+            Address
           </dt>
           <dd class="govuk-summary-list__value">
-            
-              07537645322
-
-          
-              
-            
+              	12 Coin Street <br>
+                Bradford<br>
+                BD24 5D
           </dd>
           
         </div>
@@ -73,63 +99,17 @@
 
 
 
-      {{ govukRadios({
-  idPrefix: "hasPartner",
-  name: "hasPartner",
-  fieldset: {
-    legend: {
-      text: "Do these match the details held on searchlight",
-      classes: "govuk-fieldset__legend--m"
-    }
-  },
-  items: [
-    {
-      value: "Yes",
-      text: "Yes"
-    },
-    {
-      value: "No",
-      text: "No"
-    }
-  ]
-}) }}
-
-
-
-
-
-
-      <!-- 
-      <p> Name: <b>Melissa Gentles</b></p>
-      <p>National Insurance number: <b>NC 12 34 56 C</b></p>
-      <p>Date of birth: <b>23 January 2003</b></p> -->
  
-      <!-- <p class="govuk-heading-m"><b>Are these details correct?</b></p>
-            
-    {{ govukRadios({
-      name: "validSelection",
-  items: [
-    {
-      value: "Yes",
-      text: "Yes"
-    
-    },
-    {
-      value: "No",
-      text: "No"
-    
-    }
-  ]
-}) }} -->
-
-
-
-
+</div>
         {{ govukButton({
           text: "Continue"
         }) }}
 
-      </form>
+    
 
+    </div>
+  </div>
+
+    </form>
 
 {% endblock %}

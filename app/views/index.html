@@ -5,11 +5,11 @@
 
   {% block content %}
 
-  <div class="govuk-grid-row">
-    <div class="govuk-grid-column-two-thirds">
+
+  
 
       <h1 class="govuk-heading-xl">
-        CACSR Refactor Prototype
+        CACS-R Refactor Prototype
       </h1>
 
       {%from "govuk/components/tag/macro.njk" import govukTag %}
@@ -21,10 +21,11 @@
       <br>
 
       
-      <p class="govuk-body-l">
-        <br> Agent-facing prototype for the refactored Carer's Allowance Claim and Case Service (CACS-R).
-      </p>
-      
+        <!-- <p class="govuk-body-l">
+          <br> Agent-facing prototype for the refactored Carer's Allowance Claim and Case Service (CACS-R).
+        </p>
+        -->
+        <br>
 
       <h2 class="govuk-heading-m">About this prototype</h2>
 
@@ -39,15 +40,19 @@
         items: [
           {
             heading: {
-              text: "Version 1 - July 2026"
+              text: "UR 1: Validation of Registration"
             },
             content: {
               html: "
                 <ul class='govuk-list govuk-list--bullet'>
+                  <b>July - August 2026</b>
                   <li>Set up of user journey selection</li>
-                  <li>First iteration of claim registration for new claims </li>
+                  <li>First iteration of claim registration for new claims</li>
+                  <li>UR 1: Validation of registration question set</li>
                 </ul>
+                
               "
+              
             }
 
           }
@@ -55,7 +60,7 @@
       }) }}
 
       {{ govukButton({
-        text: "Start now",
+        text: "Start prototype",
         href: "index-scenario"
       }) }}
 

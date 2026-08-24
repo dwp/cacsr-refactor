@@ -1,0 +1,87 @@
+{% extends "layouts/agent-main.html" %}
+
+{% block pageTitle %}
+  Edit claim information – {{ serviceName }}
+{% endblock %}
+
+{% block containerStart %}
+  {{ govukBackLink({
+    text: "Back",
+    href: "javascript:window.history.back()"
+  }) }}
+{% endblock %}
+
+{% block content %}
+
+{% from "govuk/components/radios/macro.njk" import govukRadios %}
+{% from "govuk/components/input/macro.njk" import govukInput %}
+
+
+
+    <form class="form" action="check-address" method="post">
+    <h1 class="govuk-heading-l">
+      Check [Firstname Surname]'s name
+    </h1>
+
+    {% from "govuk/components/summary-list/macro.njk" import govukSummaryList %}
+
+{{ govukSummaryList({
+  classes: "govuk-summary-list--no-border",
+  rows: [
+    {
+      key: {
+        text: "NINO"
+      },
+      value: {
+        html: "PJ 123456 A"
+      }
+    }
+  ]
+}) }}
+
+</div>
+</div>
+
+    <p class="govuk-heading-m">Do you need to update [Firstname Surname]'s name?</p>
+
+    {% set noHtml %}
+      {{ govukInput({
+        id: "ninoMismatchReason",
+        name: "ninoMismatchReason",
+        classes: "govuk-!-width-two-thirds",
+        label: {
+          text: "NINO"
+        }
+      }) }}
+    {% endset %}
+
+    {{ govukRadios({
+      name: "ninoMatch",
+      fieldset: {
+        legend: {
+          isPageHeading: false
+        }
+      },
+      items: [
+        {
+          value: "No",
+          text: "No",
+    
+        },
+        {
+          value: "Yes",
+          text: "Yes"
+          
+        }
+      ]
+    }) }}
+
+    {{ govukButton({
+      text: "Continue"
+    }) }}
+
+  </div>
+</div>
+</form>
+
+{% endblock %}

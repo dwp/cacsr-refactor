@@ -18,7 +18,7 @@
 
 
 
-    <form class="form" action="registration-partner-input" method="post">
+    <form class="form" action="/check-partner-redirect" method="post">
 
 {% set partnerDetailsHtml %}
 
@@ -72,12 +72,12 @@
   },
   items: [
     {
-      value: "Yes",
-      text: "Yes"
-    },
-    {
       value: "No",
       text: "No"
+    },
+    {
+      value: "Yes",
+      text: "Yes"
     }
   ]
 }) }}
@@ -93,7 +93,7 @@
 }) }} -->
 
 {{ govukButton({
-  text: "Save and continue"
+  text: "Continue"
 }) }}
 
 </form>

@@ -17,11 +17,22 @@
 {% from "govuk/components/input/macro.njk" import govukInput %}
 {% from "govuk/components/summary-list/macro.njk" import govukSummaryList %}
 
-<div class="govuk-grid-row">
 
-      <h1 class="govuk-heading-l">
-        Check the claimant's phone number
-      </h1>
+    <form class="form" action="/phone-input-redirect" method="post">
+
+{% set firstName = (data["first-name"] or "Melissa") | capitalize %}
+{% set lastName = (data["last-name"] or "Gentles") | capitalize %}
+
+{% if lastName | lower | last == "s" %}
+  {% set possessiveName = firstName + " " + lastName + "'" %}
+{% else %}
+  {% set possessiveName = firstName + " " + lastName + "'s" %}
+{% endif %}
+
+<h1 class="govuk-heading-l">
+  Check {{ possessiveName }} phone number
+</h1>
+
 
       {{ govukSummaryList({
         classes: "govuk-summary-list--no-border",
@@ -37,11 +48,8 @@
         ]
       }) }}
 
-      <p class="govuk-heading-m">
-        Do you need to update this number?
-      </p>
-
-      {% set noHtml %}
+    
+      <!-- {% set noHtml %}
         {{ govukInput({
           id: "searchlightPhoneNumber",
           name: "searchlightPhoneNumber",
@@ -50,21 +58,21 @@
             text: "Phone number"
           }
         }) }}
-      {% endset %}
-
+      {% endset %} -->
+      <p class="govuk-heading-m">
+        Do you need to update this number?
+      </p>
       {{ govukRadios({
+        classes: "govuk-radios--inline",
         name: "phoneNumberMatch",
         items: [
           {
-            value: "Yes",
-            text: "Yes",
-            conditional: {
-              html: noHtml
-            }
-          },
-          {
             value: "No",
             text: "No"
+          },
+          {
+            value: "Yes",
+            text: "Yes"
             
           }
         ]

@@ -16,6 +16,10 @@
 {% from "govuk/components/summary-list/macro.njk" import govukSummaryList %}
 
 
+
+
+    <form class="form" action="confirmation" method="post">
+
  <h1 class="govuk-heading-l">
   Check your answers
 </h1>
@@ -26,24 +30,19 @@
 
 
 <h2 class="govuk-heading-s">
-  Claimant details
+  Carer's details
 </h2>
 
 {{ govukSummaryList({
   rows: [
     {
       key: { text: "National Insurance number" },
-      value: { text: "PJ 12 34 56 A" },
-      actions: {
-        items: [{
-          href: "check-nino",
-          text: "Change"
-        }]
+      value: { text: "PJ 12 34 56 A" 
       }
     },
     {
       key: { text: "Name" },
-      value: { text: "Jane Smith" },
+      value: { text: "Ms Melissa Gentles" },
       actions: {
         items: [{
           href: "check-name",
@@ -77,7 +76,7 @@
 }) }}
 
 <h2 class="govuk-heading-s">
-  Dependant person details
+  Disabled person's details
 </h2>
 
 {{ govukSummaryList({
@@ -94,7 +93,7 @@
     },
     {
       key: { text: "Name" },
-      value: { text: "John Smith" },
+      value: { text: "Ms Csarina Gentles"},
       actions: {
         items: [{
           href: "dp-name",
@@ -115,7 +114,7 @@
       }
     },
     {
-      key: { text: "Relationship to claimant" },
+      key: { text: "Relationship to carer" },
       value: { text: "Son" },
       actions: {
         items: [{
@@ -135,7 +134,7 @@
   rows: [
     {
       key: { text: "Does the customer have a partner?" },
-      value: { text: "Yes" },
+      value: { text: "No" },
       actions: {
         items: [{
           href: "partner-check",
@@ -234,7 +233,7 @@
   rows: [
     {
       key: { text: "Fraud or CFEMS interest" },
-      value: { text: "No" },
+      value: { text: "Yes" },
       actions: {
         items: [{
           href: "fraud-check",
@@ -244,7 +243,7 @@
     },
     {
       key: { text: "Power of attorney" },
-      value: { text: "Yes" },
+      value: { text: "No" },
       actions: {
         items: [{
           href: "power-of-attorney",
@@ -254,7 +253,7 @@
     },
     {
       key: { text: "Letter issued" },
-      value: { text: "Yes" }
+      value: { text: "No" }
     }
   ]
 }) }}
@@ -264,6 +263,7 @@
 
 {{ govukButton({
   text: "Submit claim"
+
 }) }}
 
   </div>

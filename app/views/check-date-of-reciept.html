@@ -13,20 +13,27 @@
 
 {% block content %}
 
-  <div class="govuk-grid-row">
-    <div class="govuk-grid-column-two-thirds">
+
+
+
+<form class="form" action="check-date-of-claim" method="post">
+
+  {% set firstName = (data["first-name"] or "Melissa") | capitalize %}
+{% set lastName = (data["last-name"] or "Gentles") | capitalize %}
+
+{% set possessiveName = firstName + " " + lastName + "" %}
+
+
+<h1 class="govuk-heading-l">
+  When did {{ possessiveName }} submit the claim?
+</h1>
+
+  
 {% from "govuk/components/date-input/macro.njk" import govukDateInput %}
 
 {{ govukDateInput({
   id: "dateOfClaim",
-  namePrefix: "dateOfReciept",
-  fieldset: {
-    legend: {
-      text: "Enter the date of reciept",
-      isPageHeading: true,
-      classes: "govuk-fieldset__legend--l"
-    }
-  }
+  namePrefix: "QB"
 }) }}
         {{ govukButton({
           text: "Continue"

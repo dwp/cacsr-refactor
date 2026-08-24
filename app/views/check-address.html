@@ -16,22 +16,30 @@
 {% from "govuk/components/radios/macro.njk" import govukRadios %}
 {% from "govuk/components/summary-list/macro.njk" import govukSummaryList %}
 
-<div class="govuk-grid-row">
-  <form class="form" action="check-partner" method="post">
-    <h1 class="govuk-heading-l">
-      Check the claimant's address
-    </h1>
 
-  <div class="govuk-grid-column-two-thirds">
 
+  <form class="form" action="/check-address-redirect" method="post">
   
+{% set firstName = (data["first-name"] or "Csarina") | capitalize %}
+{% set lastName = (data["last-name"] or "Gentles") | capitalize %}
+
+{% if lastName | lower | last == "s" %}
+  {% set possessiveName = firstName + " " + lastName + "'" %}
+{% else %}
+  {% set possessiveName = firstName + " " + lastName + "'s" %}
+{% endif %}
+
+<h1 class="govuk-heading-l">
+  Check {{ possessiveName }} address
+</h1>
+
 
     {{ govukSummaryList({
       classes: "govuk-summary-list--no-border",
       rows: [
         {
           key: {
-            text: "Claimant address"
+            text: "Address"
           },
           value: {
             html: "1 High Street<br>Manchester<br>M1 1AA"
@@ -52,21 +60,22 @@
         } -->
 
     {{ govukRadios({
+       classes: "govuk-radios--inline",
       name: "addressUpdateChoice",
       fieldset: {
         legend: {
-          text: "Do you need to update the address?",
+          text: "Do you need to update this address?",
           classes: "govuk-fieldset__legend--m"
         }
       },
       items: [
         {
-          value: "claimant-address",
-          text: "Yes"
+          value: "No",
+          text: "No"
         },
         {
-          value: "dp-address",
-          text: "No"
+          value: "Yes",
+          text: "Yes"
         }
       ]
     }) }}
@@ -75,7 +84,6 @@
       text: "Continue"
     }) }}
 
-  </div>
 </div>
 </form>
 

@@ -1,0 +1,115 @@
+{% extends "layouts/agent-main.html" %}
+
+{% block pageTitle %}
+  Question page template – {{ serviceName }} – GOV.UK Prototype Kit
+{% endblock %}
+
+{% block containerStart %}
+  {{ govukBackLink({
+    text: "Back",
+    href: "javascript:window.history.back()"
+  }) }}
+{% endblock %}
+
+{% block content %}
+
+      <!-- {% if data['prototypeScenarioSelection'] == "Pre-registration journey A" %}
+      <form class="form" action="check-name" method="post">
+
+        {% elif data['prototypeScenarioSelection'] == "Pre-registration journey B" %}
+        <form class="form" action="registration-customer" method="post">
+
+          {% endif %}
+ -->
+
+<form class="form" action="registration-partner" method="post">
+
+ 
+
+
+
+  
+   
+
+<div class="govuk-form-group">
+
+  <h1 class="govuk-heading-l">Search for partner</h1>
+
+<div class="govuk-form-group">
+      <label class="govuk-label moj-search__label" for="search">
+        Enter partner's National Insurance number
+      </label>
+      <input class="govuk-input govuk-input--width-10 moj-search__input " id="search" name="carernino" type="search" aria-describedby="search-hint" value="">
+      <button type="submit" class="govuk-button govuk-button--secondary" data-module="govuk-button" style="margin-left: 6px;" data-govuk-button-init="">
+        Search
+      </button>
+    </div>
+
+
+
+      <h1 class="govuk-heading-m">Partner details</h1>
+<dl class="govuk-summary-list">
+      
+        <div class="govuk-summary-list__row">
+          <dt class="govuk-summary-list__key">
+            Full name
+          </dt>
+          <dd class="govuk-summary-list__value">
+            
+              Mr Tom Holland
+            
+          </dd>
+          
+        </div>
+        <div class="govuk-summary-list__row">
+          <dt class="govuk-summary-list__key">
+            Date of birth
+          </dt>
+          <dd class="govuk-summary-list__value">
+            
+              1
+              January
+              1995
+
+              
+                <strong class="govuk-tag govuk-tag--green govuk-!-margin-left-4">
+                  Verified
+                </strong>
+              
+            
+          </dd>
+          
+        </div>
+
+
+
+        <div class="govuk-summary-list__row">
+          <dt class="govuk-summary-list__key">
+            Address
+          </dt>
+          <dd class="govuk-summary-list__value">
+              	12 Coin Street <br>
+                Bradford<br>
+                BD24 5D
+          </dd>
+          
+        </div>
+        
+      </dl>
+
+
+
+ 
+</div>
+        {{ govukButton({
+          text: "Continue"
+        }) }}
+
+    
+
+    </div>
+  </div>
+
+    </form>
+
+{% endblock %}

@@ -15,17 +15,25 @@
 
 {% from "govuk/components/radios/macro.njk" import govukRadios %}
 
-<div class="govuk-grid-row">
-  <div class="govuk-grid-column-two-thirds">
+
+    <form class="form" action="assess-qb-start" method="post">
+
+
 {{ govukRadios({
   idPrefix: "qualifyingBenefit",
   name: "qualifyingBenefit",
+  
   fieldset: {
     legend: {
-      text: "What is the customer's qualifying benefit",
+      text: "What is the qualifying benefit?",
       isPageHeading: true,
       classes: "govuk-fieldset__legend--l"
     }
+    
+  },
+
+      hint: {
+    text: "Select which benefit the disabled person receives"
   },
   items: [
     {
@@ -41,20 +49,8 @@
       text: "Disability Living Allowance (DLA)"
     },
     {
-      value: "DLA Lower",
-      text: "Disability Living Allowance lower rate care component (DLA Lower)"
-    },
-    {
       value: "PIP",
       text: "Personal Independence Payment (PIP)"
-    },
-    {
-      value: "CDP",
-      text: "Child Disability Payment (CDP)"
-    },
-    {
-      value: "ADP",
-      text: "Adult Disability Payment (ADP)"
     }
   ]
 }) }}

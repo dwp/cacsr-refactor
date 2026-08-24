@@ -1,0 +1,98 @@
+{% extends "layouts/agent-main.html" %}
+
+{% block pageTitle %}
+  Edit claim information – {{ serviceName }}
+{% endblock %}
+
+{% block containerStart %}
+  {{ govukBackLink({
+    text: "Back",
+    href: "javascript:window.history.back()"
+  }) }}
+{% endblock %}
+
+{% block content %}
+
+<form class="form" action="registration-partner" method="post">
+      <h1 class="govuk-heading-l">
+        Enter partner name
+      </h1>
+
+  {{ govukSelect({
+    id: "partner-title",
+    name: "partnerTitle",
+    label: {
+      text: "Title"
+    },
+    items: [
+      {
+        value: "Mr",
+        text: "Mr",
+        selected: (data['partnerTitle'] or 'Mr') == 'Mr'
+      },
+      {
+        value: "Ms",
+        text: "Ms",
+        selected: data['partnerTitle'] == 'Ms'
+      },
+      {
+        value: "Mrs",
+        text: "Mrs",
+        selected: data['partnerTitle'] == 'Mrs'
+      },
+      {
+        value: "Miss",
+        text: "Miss",
+        selected: data['partnerTitle'] == 'Miss'
+      },
+      {
+        value: "Dr",
+        text: "Dr",
+        selected: data['partnerTitle'] == 'Dr'
+      }
+    ]
+  }) }}
+
+  {{ govukInput({
+    label: {
+      text: "First name"
+    },
+    classes: "govuk-input--width-20",
+    id: "partner-first-name",
+    name: "partnerFirstName",
+    autocomplete: "given-name",
+    spellcheck: false,
+    value: data['partnerFirstName'] or "Tom"
+  }) }}
+
+  {{ govukInput({
+    label: {
+      text: "Middle name"
+    },
+    classes: "govuk-input--width-20",
+    id: "partner-middle-name",
+    name: "partnerMiddleName",
+    autocomplete: "additional-name",
+    spellcheck: false,
+    value: data['partnerMiddleName']
+  }) }}
+
+  {{ govukInput({
+    label: {
+      text: "Last name"
+    },
+    classes: "govuk-input--width-20",
+    id: "partner-last-name",
+    name: "partnerLastName",
+    autocomplete: "family-name",
+    spellcheck: false,
+    value: data['partnerLastName'] or "Holland"
+  }) }}
+
+  {{ govukButton({
+    text: "Continue"
+  }) }}
+
+</form>
+
+{% endblock %}

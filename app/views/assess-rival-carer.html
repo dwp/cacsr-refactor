@@ -1,0 +1,56 @@
+{% extends "layouts/agent-main.html" %}
+
+{% block pageTitle %}
+  Fraud or CFEMS interest – {{ serviceName }}
+{% endblock %}
+
+{% block containerStart %}
+  {{ govukBackLink({
+    text: "Back",
+    href: "javascript:window.history.back()"
+  }) }}
+{% endblock %}
+
+{% block content %}
+
+{% from "govuk/components/radios/macro.njk" import govukRadios %}
+
+
+      <form class="form" action="assess-breaks-in-care" method="post">
+
+    {% set firstName = (data["first-name"] or "Melissa") | capitalize %}
+    {% set lastName = (data["last-name"] or "Gentles") | capitalize %}
+    {% set possessiveName = firstName + " " + lastName  %}
+
+
+<h1 class="govuk-heading-l">
+  Is there a rival carer?
+</h1>
+
+
+      {{ govukRadios({
+        classes: "govuk-radios--inline",
+        idPrefix: "fraudInterest",
+        name: "fraudInterest",
+        items: [
+          {
+            value: "No",
+            text: "No"
+          },
+          {
+            value: "Yes",
+            text: "Yes"
+          }
+        ]
+      }) }}
+
+      {{ govukButton({
+        text: "Continue"
+      }) }}
+
+    </form>
+
+  </div>
+</div>
+
+{% endblock %}

@@ -1,4 +1,4 @@
-{% extends "layouts/agent.html" %}
+{% extends "layouts/agent-main.html" %}
 
 {% block pageTitle %}
   Question page template – {{ serviceName }} – GOV.UK Prototype Kit
@@ -12,120 +12,175 @@
 {% endblock %}
 
 {% block content %}
+{% set dpFullName = [
+  data['dpTitle'] or 'Ms',
+  data['dpFirstName'] or 'Csarina',
+  data['dpMiddleName'],
+  data['dpLastName'] or 'Gentles'
+] | reject('equalto', '') | join(' ') %}
 
-  <div class="govuk-grid-row">
-    <div class="govuk-grid-column-two-thirds">
+{% set dpNino = data['dpNino'] or 'PJ 12 34 56 C' %}
 
-      <form class="form" action="home" method="post">
+{% set dpDob = data['dpDob'] or '5 January 1978' %}
 
+{% set dpAddress = (
+  data['select-an-address-dp']
+  or '72 Guild Street<br>London<br>SE23 6FH'
+) %}
+
+
+
+      <form class="form" action="assess-poa" method="post">
 
       {% from "govuk/components/radios/macro.njk" import govukRadios %}
-      <h1 class="govuk-heading-l">dependant details</h1>
-      
-        {% from "govuk/components/summary-list/macro.njk" import govukSummaryList %}
+      <h1 class="govuk-heading-l">Check disabled person's details</h1>
 
 
-        {{ govukSummaryList({
-          rows: [
+
+{{ govukSummaryList({
+  rows: [
+    {
+      key: {
+        text: "National Insurance Number"
+      },
+      value: {
+        text: dpNino
+      }
+    },
+    {
+      key: {
+        text: "Full Name"
+      },
+      value: {
+        text: dpFullName
+      },
+      actions: {
+        items: [
           {
-              key: {
-                text: "National Insurance Number"
-              },
-              value: {
-                text: "PJ 12 34 56 C"
-              }
-            },  
+            href: "check-name-input-dp",
+            text: "Change",
+            visuallyHiddenText: "name"
+          }
+        ]
+      }
+    },
+    {
+      key: {
+        text: "Date of birth"
+      },
+      value: {
+        text: dpDob
+      }
+    },
+    {
+      key: {
+        text: "Address"
+      },
+      value: {
+        html: (data['select-an-address-dp'] | replace(", ", "<br>"))
+          or "12 Coin Street <br> Bradford<br> BD24 5D"
+      },
+      actions: {
+        items: [
           {
-              key: {
-                text: "Title"
-              },
-              value: {
-                text: "Ms"
-              }
-            },
-            {
-              key: {
-                text: "Name"
-              },
-              value: {
-                text: "Holly Jones"
-              },
-              actions: {
-                items: [
-                  {
-                    href: "#",
-                    text: "Change",
-                    visuallyHiddenText: "name"
-                  }
-                ]
-              }
-            },
-            {
-              key: {
-                text: "Date of birth"
-              },
-              value: {
-                text: "5 January 2005"
-              },
-              actions: {
-                items: [
-                  {
-                    href: "#",
-                    text: "Change",
-                    visuallyHiddenText: "date of birth"
-                  }
-                ]
-              }
-            },
-            {
-              key: {
-                text: "Address"
-              },
-              value: {
-                html: "72 Guild Street<br>London<br>SE23 6FH"
-              },
-              actions: {
-                items: [
-                  {
-                    href: "#",
-                    text: "Change",
-                    visuallyHiddenText: "address"
-                  }
-                ]
-              }
-            },
-            {
-              key: {
-                text: "Relationship"
-              },
-              value: {
-                html: '<p class="govuk-body">Child</p>'
-              },
-              actions: {
-                items: [
-                  {
-                    href: "#",
-                    text: "Change",
-                    visuallyHiddenText: "relationship"
-                  }
-                ]
-              }
-            }
-          ]
-        }) }}
+            href: "check-address-lookup-c-dp",
+            text: "Change",
+            visuallyHiddenText: "address"
+          }
+        ]
+      }
+    }
+  ]
+}) }}
 
-         <p>
-          <a href="https://design-system.service.gov.uk">View previous dependants</a>
-        </p>
-<!-- 
-        <p class="govuk-body">Check the details of the customer and the dependant before registering the claim </p> -->
+<!-- <dl class="govuk-summary-list">
+        
+  
+        <div class="govuk-summary-list__row">
+          <dt class="govuk-summary-list__key">
+            Full name
+          </dt>
+          <dd class="govuk-summary-list__value">
+            
+              Ms Melissa Gentles
+            
+          </dd>
+          
+        </div>
+        <div class="govuk-summary-list__row">
+          <dt class="govuk-summary-list__key">
+            Date of birth
+          </dt>
+          <dd class="govuk-summary-list__value">
+            
+              1
+              January
+              2000
+
+              
+                <strong class="govuk-tag govuk-tag--green govuk-!-margin-left-4">
+                  Verified
+                </strong>
+              
+            
+          </dd>
+          
+        </div>
+
+
+
+        <div class="govuk-summary-list__row">
+          <dt class="govuk-summary-list__key">
+            Phone number
+          </dt>
+          <dd class="govuk-summary-list__value">
+            
+              07537645322
+
+          
+              
+            
+          </dd>
+          
+        </div>
+        
+      </dl>
+ -->
+
+
+
+
+
+      <!-- 
+      <p> Name: <b>Melissa Gentles</b></p>
+      <p>National Insurance number: <b>NC 12 34 56 C</b></p>
+      <p>Date of birth: <b>23 January 2003</b></p> -->
+ 
+      <!-- <p class="govuk-heading-m"><b>Are these details correct?</b></p>
+            
+    {{ govukRadios({
+      name: "validSelection",
+  items: [
+    {
+      value: "No",
+      text: "No"
+    
+    },
+    {
+      value: "Yes",
+      text: "Yes"
+    
+    }
+  ]
+}) }} -->
+
+
+
 
         {{ govukButton({
           text: "Continue"
         }) }}
-
       </form>
 
-  </div>
 
 {% endblock %}

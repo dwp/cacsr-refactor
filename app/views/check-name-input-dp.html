@@ -1,0 +1,108 @@
+{% extends "layouts/agent-main.html" %}
+
+{% block pageTitle %}
+  Edit claim information – {{ serviceName }}
+{% endblock %}
+
+{% block containerStart %}
+  {{ govukBackLink({
+    text: "Back",
+    href: "javascript:window.history.back()"
+  }) }}
+{% endblock %}
+
+{% block content %}
+
+{% from "govuk/components/input/macro.njk" import govukInput %}
+{% from "govuk/components/select/macro.njk" import govukSelect %}
+
+
+{% if data['prototypeScenarioSelection'] == "Research tasks" %}
+  <form class="form" action="registration-dp" method="post">
+  {% else %}
+  <form class="form" action="check-relationship" method="post">
+{% endif %}
+    
+
+
+  
+    <h1 class="govuk-heading-l">
+      Enter the disabled person's full name
+    </h1>
+    
+  {{ govukSelect({
+    id: "dp-title",
+    name: "dpTitle",
+    label: {
+      text: "Title"
+    },
+    items: [
+      {
+        value: "Ms",
+        text: "Ms",
+        selected: (data['dpTitle'] or 'Ms') == 'Ms'
+      },
+      {
+        value: "Mr",
+        text: "Mr",
+        selected: data['dpTitle'] == 'Mr'
+      },
+      {
+        value: "Mrs",
+        text: "Mrs",
+        selected: data['dpTitle'] == 'Mrs'
+      },
+      {
+        value: "Miss",
+        text: "Miss",
+        selected: data['dpTitle'] == 'Miss'
+      },
+      {
+        value: "Dr",
+        text: "Dr",
+        selected: data['dpTitle'] == 'Dr'
+      }
+    ]
+  }) }}
+
+  {{ govukInput({
+    label: {
+      text: "First name"
+    },
+    classes: "govuk-input--width-20",
+    id: "dp-first-name",
+    name: "dpFirstName",
+    spellcheck: false,
+    value: data['dpFirstName'] or "Csarina"
+  }) }}
+
+  {{ govukInput({
+    label: {
+      text: "Middle name"
+    },
+    classes: "govuk-input--width-20",
+    id: "dp-middle-name",
+    name: "dpMiddleName",
+    spellcheck: false,
+    value: data['dpMiddleName']
+  }) }}
+
+  {{ govukInput({
+    label: {
+      text: "Last name"
+    },
+    classes: "govuk-input--width-20",
+    id: "dp-last-name",
+    name: "dpLastName",
+    spellcheck: false,
+    value: data['dpLastName'] or "Gentles"
+  }) }}
+
+  {{ govukButton({
+    text: "Continue"
+  }) }}
+
+</form>
+
+{% endblock %}
+

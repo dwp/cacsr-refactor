@@ -13,70 +13,74 @@
 
 {% block content %}
 
-
+{% from "govuk/components/radios/macro.njk" import govukRadios %}
 {% from "govuk/components/input/macro.njk" import govukInput %}
 
 
-{% from "govuk/components/checkboxes/macro.njk" import govukCheckboxes %}
 
+    <form class="form" action="/check-name" method="post">
+
+      
     <h1 class="govuk-heading-l">
-      Enter the claimant's full name
+      Check the carer's name
     </h1>
 
-      {{ govukSelect({
-        id: "customer-title",
-        name: "customerTitle",
-        label: {
-          text: "Title"
-        },
-        items: [
-          { value: "Ms", text: "Ms", selected: true },
-          { value: "Mr", text: "Mr" },
-          { value: "Mrs", text: "Mrs" },
-          { value: "Miss", text: "Miss" },
-          { value: "Dr", text: "Dr" }
-        ]
-      }) }}
+    {% from "govuk/components/summary-list/macro.njk" import govukSummaryList %}
 
-      {{ govukInput({
-        label: {
-          text: "First name"
-        },
-        classes: "govuk-input--width-20",
-        id: "first-name",
-        name: "firstName",
-        autocomplete: "name",
-        spellcheck: false
-      }) }}
-
-
-            {{ govukInput({
-        label: {
-          text: "Middle name"
-        },
-        classes: "govuk-input--width-20",
-        id: "first-name",
-        name: "firstName",
-        autocomplete: "lastname",
-        spellcheck: false
-      }) }}
-
-
-            {{ govukInput({
-        label: {
-          text: "Last name"
-        },
-        classes: "govuk-input--width-20",
-        id: "first-name",
-        name: "firstName",
-        autocomplete: "lastname",
-        spellcheck: false
-      }) }}
-
-
-
-{{ govukButton({
-  text: "Save"
+{{ govukSummaryList({
+  classes: "govuk-summary-list--no-border",
+  rows: [
+    {
+      key: {
+        text: "Full name"
+      },
+      value: {
+        html: "Ms Melissa Gentles"
+      }
+    }
+  ]
 }) }}
+
+
+    <p class="govuk-heading-m">Do you need to update the carer's name?</p>
+
+    {% set noHtml %}
+      {{ govukInput({
+        id: "checkName",
+        name: "checkName",
+        classes: "govuk-!-width-two-thirds",
+        label: {
+          text: "NINO"
+        }
+      }) }}
+    {% endset %}
+
+    {{ govukRadios({
+       classes: "govuk-radios--inline",
+      name: "checkName",
+      fieldset: {
+        legend: {
+          isPageHeading: false
+        }
+      },
+      items: [
+        {
+          value: "No",
+          text: "No"
+        },
+        {
+          value: "Yes",
+          text: "Yes"
+        }
+      ]
+    }) }}
+
+    {{ govukButton({
+      text: "Continue"
+    }) }}
+
+  </div>
+</div>
+</form>
 
 {% endblock %}

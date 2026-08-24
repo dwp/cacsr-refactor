@@ -13,10 +13,7 @@
 
 {% block content %}
 
-  <div class="govuk-grid-row">
-    <div class="govuk-grid-column-two-thirds">
-
-      <form class="form" action=/claim-type method="post">
+      <form class="form" action="/scenario-selection" method="post">
 
 
       {% from "govuk/components/radios/macro.njk" import govukRadios %}
@@ -45,6 +42,14 @@
     {
       value: "Pre-registration journey B",
       text: "Pre-registration journey B"
+    },
+    {
+      value: "Pre-registration journey C",
+      text: "Pre-registration journey C"
+    },
+    {
+      value: "Research tasks",
+      text: "Research tasks"
     }
   ]
 }) }}
@@ -97,8 +102,5 @@
         }) }}
 
       </form>
-
-    </div>
-  </div>
 
 {% endblock %}

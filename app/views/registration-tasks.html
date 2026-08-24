@@ -1,79 +1,94 @@
 {% extends "layouts/agent-main.html" %}
 
 {% block pageTitle %}
-  Task list template – {{ serviceName }} – GOV.UK Prototype Kit
+  Start processing claim – {{ serviceName }}
 {% endblock %}
 
-{% block containerStart %}{% endblock %}
+{% block containerStart %}
+  {{ govukBackLink({
+    text: "Back",
+    href: "javascript:window.history.back()"
+  }) }}
+{% endblock %}
 
 {% block content %}
-  <div class="govuk-grid-row">
-    <div class="govuk-grid-column-two-thirds">
-       <form class="form" action="home" method="post">
 
-      <h1 class="govuk-heading-l">Register a new claim</h1>
+{% set completedStatus = {
+  tag: {
+    text: "Completed",
+    classes: "govuk-tag--green"
+  }
+} %}
 
-      {% set completedStatus = {
-        text: "Completed"
-      } %}
+{% set inProgressStatus = {
+  tag: {
+    text: "In progress",
+    classes: "govuk-tag--yellow"
+  }
+} %}
 
-      {% set incompleteStatus = {
-        tag: {
-          text: "Incomplete",
-          classes: "govuk-tag--blue"
-        }
-      } %}
+{% set notStartedStatus = {
+  tag: {
+    text: "Not started",
+    classes: "govuk-tag--blue"
+  }
+} %}
 
-      {# To switch between the completed and incomplete statues, use some inline logic within the component below, like this: "status: (completedStatus if ... else incompleteStatus)" #}
+{% if data['taskAStatus'] == 'completed' %}
+  {% set taskAStatus = completedStatus %}
+{% elseif data['taskAStatus'] == 'in-progress' %}
+  {% set taskAStatus = inProgressStatus %}
+{% else %}
+  {% set taskAStatus = notStartedStatus %}
+{% endif %}
 
-      {{ govukTaskList({
-        idPrefix: "first-section",
-        items: [
+{% if data['taskBStatus'] == 'completed' %}
+  {% set taskBStatus = completedStatus %}
+{% elseif data['taskBStatus'] == 'in-progress' %}
+  {% set taskBStatus = inProgressStatus %}
+{% else %}
+  {% set taskBStatus = notStartedStatus %}
+{% endif %}
 
-          {
-            title: {
-              text: "Relationship and customer type"
-            },
-            href: "registration-claim",
-            status: incompleteStatus
-          },
-          {
-            title: {
-              text: "Claim details"
-            },
-            href: "registration-claim",
-            status: incompleteStatus
-          },
-          {
-            title: {
-              text: "Claimant and partner details"
-            },
-            href: "registration-customer",
-            status: incompleteStatus
-          },
-          {
-            title: {
-              text: "dependant relationship"
-            },
-            href: "registration-claim",
-            status: incompleteStatus
-          },
-           {
-            title: {
-              text: "Disabled person's details
-"
-            },
-            href: "registration-dp",
-            status: incompleteStatus
-          }
-        ]
-      }) }}
+{% if data['taskCStatus'] == 'completed' %}
+  {% set taskCStatus = completedStatus %}
+{% elseif data['taskCStatus'] == 'in-progress' %}
+  {% set taskCStatus = inProgressStatus %}
+{% else %}
+  {% set taskCStatus = notStartedStatus %}
+{% endif %}
 
 
-      <div class="govuk-!-margin-top-5">
-        {{ govukButton({ text: "Register a claim" }) }}
-      </div>
-</form>
-    </div>
-  </div>
+{{ govukTaskList({
+  idPrefix: "claim-tasks",
+  items: [
+    {
+      title: {
+        text: "Task A"
+      },
+      href: "registration-customer",
+      status: taskAStatus
+    },
+    {
+      title: {
+        text: "Task B"
+      },
+      href: "check-date-of-reciept",
+      status: taskBStatus
+    },
+    {
+      title: {
+        text: "Task C"
+      },
+      href: "assess-fraud",
+      status: taskCStatus
+    }
+  ]
+}) }}
+<!-- 
+<p>Task A: {{ data['taskAStatus'] }}</p>
+<p>Task B: {{ data['taskBStatus'] }}</p>
+<p>Task C: {{ data['taskCStatus'] }}</p> -->
+
+
 {% endblock %}

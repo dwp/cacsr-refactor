@@ -1,5 +1,5 @@
 {
-  "serviceName": "CACSR",
+  "serviceName": "CACS-R Refactor",
   "plugins": {
     "govuk-frontend": {
       "rebrand": true

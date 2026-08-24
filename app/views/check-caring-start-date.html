@@ -1,0 +1,54 @@
+{% extends "layouts/agent-main.html" %}
+
+{% block pageTitle %}
+  Question page template – {{ serviceName }} – GOV.UK Prototype Kit
+{% endblock %}
+
+{% block containerStart %}
+  {{ govukBackLink({
+    text: "Back",
+    href: "javascript:window.history.back()"
+  }) }}
+{% endblock %}
+
+
+{% block content %}
+
+
+ 
+  
+{% from "govuk/components/date-input/macro.njk" import govukDateInput %}
+
+
+
+
+
+
+{% set firstName = (data["first-name"] or "Melissa") | capitalize %}
+{% set lastName = (data["last-name"] or "Gentles") | capitalize %}
+
+{% set possessiveName = firstName + " " + lastName + "" %}
+
+
+<h1 class="govuk-heading-l">
+  When did {{ possessiveName }} start caring for the disabled person?
+</h1>
+
+
+    <form class="form" action="assess-qb" method="post">
+
+
+{{ govukDateInput({
+  id: "dateOfClaim",
+  namePrefix: "dateOfClaim"
+}) }}
+        {{ govukButton({
+          text: "Continue"
+        }) }}
+
+      </form>
+
+    </div>
+  </div>
+
+{% endblock %}
