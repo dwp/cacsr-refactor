@@ -4,10 +4,11 @@
     "serve": "govuk-prototype-kit serve",
     "start": "govuk-prototype-kit start"
   },
+  "name": "govuk-prototype-kit",
   "dependencies": {
     "govuk-prototype-kit": "13.20.2",
     "@dwp/dwp-frontend": "4.1.0",
-    "@govuk-prototype-kit/common-templates": "3.0.0",
+    "@govuk-prototype-kit/common-templates": "3.0.1",
     "body-parser": "2.2.2",
     "express": "5.2.1",
     "govuk-frontend": "6.2.0",

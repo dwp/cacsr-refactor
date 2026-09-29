@@ -1,0 +1,186 @@
+{% extends "layouts/agent-main.html" %}
+
+{% block pageTitle %}
+  Question page template – {{ serviceName }} – GOV.UK Prototype Kit
+{% endblock %}
+
+{% block containerStart %}
+  {{ govukBackLink({
+    text: "Back",
+    href: "javascript:window.history.back()"
+  }) }}
+{% endblock %}
+
+{% block content %}
+
+
+<form class="form" action="/search-result-redirect" method="post">
+ 
+
+  
+   
+
+<div class="govuk-form-group">
+  <h1 class="govuk-label-wrapper">
+    <label class="govuk-label govuk-label--l" for="event-name">
+      Search for carer
+    </label>
+     </h1> 
+
+<div class="govuk-form-group">
+      <label class="govuk-label moj-search__label" for="search">
+        Enter carer's National Insurance number
+      </label>
+      <input class="govuk-input govuk-input--width-10 moj-search__input " id="search" name="carernino" type="search" aria-describedby="search-hint" value="">
+      <button type="submit" class="govuk-button govuk-button--secondary" data-module="govuk-button" style="margin-left: 6px;" data-govuk-button-init="">
+        Search
+      </button>
+    </div>
+
+
+
+      <h1 class="govuk-heading-m">Search results</h1>
+
+
+      <div class="govuk-grid-row">
+  <div class="govuk-grid-column-two-thirds">
+
+
+
+
+  <p class="govuk-heading-s"> <a href="">Melissa Gentles</a> </p>
+
+<dl class="govuk-summary-list">
+      
+        <!-- <div class="govuk-summary-list__row">
+          <dt class="govuk-summary-list__key">
+            Full name
+          </dt>
+          <dd class="govuk-summary-list__value">
+            
+              Ms Melissa Gentles
+            
+          </dd>
+          
+        </div> -->
+        <div class="govuk-summary-list__row">
+          <dt class="govuk-summary-list__key">
+            Date of birth
+          </dt>
+          <dd class="govuk-summary-list__value">
+            
+              1
+              January
+              2000
+
+              
+                <strong class="govuk-tag govuk-tag--green govuk-!-margin-left-4">
+                  Verified
+                </strong>
+              
+            
+          </dd>
+          
+        </div>
+
+
+
+        <div class="govuk-summary-list__row">
+          <dt class="govuk-summary-list__key">
+            Address
+          </dt>
+          <dd class="govuk-summary-list__value">
+              	12 Coin Street <br>
+                Bradford<br>
+                BD24 5D
+          </dd>
+          
+        </div>
+        
+      </dl>
+
+
+
+
+  <p class="govuk-heading-s"> <a href="">Ben Nolan</a> </p>
+
+<dl class="govuk-summary-list">
+      
+        <!-- <div class="govuk-summary-list__row">
+          <dt class="govuk-summary-list__key">
+            Full name
+          </dt>
+          <dd class="govuk-summary-list__value">
+            
+              Ms Melissa Gentles
+            
+          </dd>
+          
+        </div> -->
+        <div class="govuk-summary-list__row">
+          <dt class="govuk-summary-list__key">
+            Date of birth
+          </dt>
+          <dd class="govuk-summary-list__value">
+            
+              1
+              January
+              1985
+
+              
+                <strong class="govuk-tag govuk-tag--green govuk-!-margin-left-4">
+                  Verified
+                </strong>
+              
+            
+          </dd>
+          
+        </div>
+
+
+
+        <div class="govuk-summary-list__row">
+          <dt class="govuk-summary-list__key">
+            Address
+          </dt>
+          <dd class="govuk-summary-list__value">
+              	23 Bird Street <br>
+                Nottingham<br>
+                N15 7D
+          </dd>
+          
+        </div>
+        
+      </dl>
+
+
+</div>
+
+
+
+
+
+
+
+
+
+
+
+</div> 
+  </div>
+<!-- 
+
+        {{ govukButton({
+          text: "Continue"
+        }) }}
+
+     -->
+</div>
+
+
+    </div>
+  </div>
+
+    </form>
+
+{% endblock %}
